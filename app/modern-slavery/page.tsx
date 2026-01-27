@@ -18,7 +18,12 @@ export default function ModernSlavery() {
               Our commitment to ethical practices
             </p>
           </div>
-        </div>
+        
+
+          <div className="mt-10">
+            <PlaceholderImage className="aspect-[4/3] lg:aspect-[3/2] shadow-sm" />
+          </div>
+</div>
       </Section>
 
       {/* Modern Slavery Content Section */}

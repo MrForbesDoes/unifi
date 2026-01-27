@@ -42,12 +42,18 @@
   }
 }
 
-/* Auto alternating section backgrounds: white / light grey */
-main > section.section-auto {
+/* Auto alternating section backgrounds: start AFTER the hero section.
+   - Hero (first section) is left transparent so it can be image-led.
+   - Sections below alternate: light grey / white / light grey ... */
+main > section.section-auto:first-of-type {
+  background-color: transparent;
+}
+
+main > section.section-auto:not(:first-of-type) {
   background-color: white;
 }
 
-main > section.section-auto:nth-of-type(even) {
+main > section.section-auto:not(:first-of-type):nth-of-type(even) {
   background-color: rgb(249 250 251); /* tailwind bg-gray-50 */
 }
 

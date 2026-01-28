@@ -1,9 +1,9 @@
-import ButtonLink from '@/src/components/ButtonLink';
+import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import Hero from '@/src/components/Hero';
 import ImagePlaceholder from '@/src/components/ImagePlaceholder';
 import PageActions from '@/src/components/PageActions';
-import Section from '@/src/components/Section';
+import { Section } from '@/src/components/Section';
 import Text from '@/src/components/Text';
 
 const roles = [

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Section from '@/src/components/Section';
+import { Section } from '@/src/components/Section';
 import Text from '@/src/components/Text';
-import ButtonLink from '@/src/components/ButtonLink';
+import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 
 export default function PlatformOverviewPage() {

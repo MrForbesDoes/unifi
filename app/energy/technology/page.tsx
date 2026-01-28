@@ -1,6 +1,6 @@
-import ButtonLink from '@/src/components/ButtonLink';
+import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
-import Section from '@/src/components/Section';
+import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 
 const tech = [

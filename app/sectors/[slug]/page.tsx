@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
-import Section from '@/src/components/Section';
-import ButtonLink from '@/src/components/ButtonLink';
+import { Section } from '@/src/components/Section';
+import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { getSectorBySlug, sectors } from '@/src/content/sectors';

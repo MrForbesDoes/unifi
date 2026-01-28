@@ -1,4 +1,4 @@
-import Section from '@/src/components/Section';
+import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 
 export default function ModernSlavery() {

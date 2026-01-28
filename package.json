@@ -1,17 +1,17 @@
 {
   "name": "unifi-reece",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "keywords": [],
+  "keywords": ["nextjs", "react", "typescript", "tailwindcss"],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Unifi.id - People first smart building and decarbonisation platform",
   "dependencies": {
     "@swc/helpers": "^0.5.18",
     "@types/node": "^25.0.10",

@@ -1,0 +1,6 @@
+# Bolt.new ignore file
+node_modules
+.next
+.git
+.DS_Store
+*.log

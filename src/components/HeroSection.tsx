@@ -1,44 +1,119 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { homeContent } from '@/src/content/home';
-import Section from './Section';
 import Text from './Text';
-import PlaceholderImage from './PlaceholderImage';
-import { m, useEnterVariants } from './motion';
+import Link from 'next/link';
+import { m, TextReveal, COOL_EASE } from './motion';
+import Image from 'next/image';
+import { AnimatePresence } from 'framer-motion';
 
 export default function HeroSection() {
-  const headline = useEnterVariants('left');
-  const lines = useEnterVariants('right');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const slides = homeContent.heroSlides;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  /**
+   * Exact Unifi.id Font Settings from DevTools:
+   * Font Family: 'Ubuntu'
+   * Font Size: 62px
+   * Letter Spacing: -2px
+   * 
+   * Button Calculation (20% smaller than headline):
+   * 62px * 0.8 = ~50px
+   */
 
   return (
-    <Section className="min-h-[70vh] flex items-center">
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-6">
-            {/* Headline */}
-            <m.div {...headline} transition={{ delay: 0.05 }}>
-              <Text as="h1" variant="h1" className="mb-6">
-                {homeContent.hero.headline}
-              </Text>
-            </m.div>
+    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black">
+      {/* Alternating Background Images with Direct Cross-fade */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence mode="popLayout">
+          <m.div 
+            key={`bg-${currentIndex}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image 
+              src={slides[currentIndex].image}
+              alt="Hero Background"
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </m.div>
+        </AnimatePresence>
+      </div>
 
-            {/* Supporting lines */}
-            <m.div {...lines} transition={{ delay: 0.14 }} className="space-y-4">
-              {homeContent.hero.supportingLines.map((line, index) => (
-                <Text key={index} variant="lead">
-                  {line}
-                </Text>
-              ))}
+      {/* Centered Content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="flex flex-col items-center">
+          <AnimatePresence mode="wait">
+            <m.div
+              key={`content-${currentIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8, ease: COOL_EASE }}
+              className="flex flex-col items-center"
+            >
+              {/* Headline - Exact Unifi.id Settings */}
+              <TextReveal className="mb-10">
+                <h1 
+                  className="font-sans font-bold text-white drop-shadow-lg leading-[1.1]"
+                  style={{ 
+                    fontSize: '62px', 
+                    letterSpacing: '-2px',
+                    fontFamily: "'Ubuntu', sans-serif"
+                  }}
+                >
+                  {slides[currentIndex].line}
+                </h1>
+              </TextReveal>
+              
+              {/* CTA Button - Oval Border, 20% smaller than headline */}
+              <m.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8, ease: COOL_EASE }}
+              >
+                <Link 
+                  href={slides[currentIndex].href}
+                  className="inline-block px-10 py-4 font-medium text-white border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  style={{ 
+                    fontSize: '50px',
+                    fontFamily: "'Ubuntu', sans-serif"
+                  }}
+                >
+                  {slides[currentIndex].cta}
+                </Link>
+              </m.div>
             </m.div>
-          </div>
-
-          <div className="lg:col-span-6">
-            <m.div {...lines} transition={{ delay: 0.22 }}>
-              <PlaceholderImage priority className="aspect-[4/3] lg:aspect-[3/2] shadow-sm" />
-            </m.div>
-          </div>
+          </AnimatePresence>
         </div>
       </div>
-    </Section>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex gap-3">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`h-1 transition-all duration-500 ${
+              index === currentIndex ? 'w-12 bg-white' : 'w-6 bg-white/20'
+            }`}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

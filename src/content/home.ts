@@ -1,6 +1,39 @@
 export const homeContent = {
+  heroSlides: [
+    {
+      image: '/unifi-assets/smart1.jpg',
+      line: 'The greatest asset of any organisation is its people.',
+      cta: 'Explore Platform',
+      href: '/platform/overview'
+    },
+    {
+      image: '/unifi-assets/hosp1.jpg',
+      line: 'Every building exists to serve, protect, and optimise wellbeing.',
+      cta: 'Our Solutions',
+      href: '/solutions/hub'
+    },
+    {
+      image: '/unifi-assets/edu1.jpg',
+      line: 'Smarter Buildings. Safer People. Greener Futures.',
+      cta: 'View Sectors',
+      href: '/sectors'
+    },
+    {
+      image: '/unifi-assets/smart1.jpg',
+      line: 'Real-time intelligence that protects people and strengthens compliance.',
+      cta: 'Safety Solutions',
+      href: '/solutions/fireguard'
+    },
+    {
+      image: '/unifi-assets/hosp1.jpg',
+      line: 'Unifi.id helps you understand how people use your spaces.',
+      cta: 'Book a Demo',
+      href: '/contact'
+    }
+  ],
   hero: {
     headline: 'The greatest asset of any organisation is its people.',
+    image: '/unifi-assets/smart1.jpg',
     supportingLines: [
       'Every building exists to serve, protect, and optimise their wellbeing.',
       'Unifi.id helps you understand how people use your spaces - giving you the insight to protect lives, reduce risk, and improve operational performance.',
@@ -14,18 +47,22 @@ export const homeContent = {
     cards: [
       {
         title: 'Budgets',
+        image: '/unifi-assets/edu1.jpg',
         description: 'Budgets are drained because inefficiency is built into infrastructure that hasn\'t kept pace with demand.',
       },
       {
         title: 'Safety',
+        image: '/unifi-assets/hosp1.jpg',
         description: 'Safety is compromised because outdated fire drills, roll-calls, and door logs can\'t confirm who is inside, where they are, or whether systems are working as they should. Evacuation oversight, behavioural anomaly detection, and real-time fire system monitoring are often missing — leaving people and compliance exposed.',
       },
       {
         title: 'Energy',
+        image: '/unifi-assets/smart1.jpg',
         description: 'Energy is wasted because lighting and HVAC run when no one is there, inflating costs and carbon footprints. With carbon taxes and ESG frameworks tightening, estates are under growing pressure to decarbonise — yet few have the capital to act.',
       },
       {
         title: 'Compliance',
+        image: '/unifi-assets/Picture6.png',
         description: 'Compliance is fragile because reporting is manual, time-consuming, and often incomplete.',
       },
     ],
@@ -84,6 +121,7 @@ export const homeContent = {
     cards: [
       {
         title: 'Smart Building Platform',
+        image: '/unifi-assets/smart1.jpg',
         description: 'Comprehensive occupancy intelligence, security, and analytics for complete building optimization.',
         bullets: [
           'Real-time occupancy tracking',
@@ -98,6 +136,7 @@ export const homeContent = {
       },
       {
         title: 'FireGuard Platform',
+        image: '/unifi-assets/hosp1.jpg',
         description: 'Complete fire safety intelligence with real-time monitoring, compliance, and insurance integration.',
         bullets: [
           'Real-time fire system monitoring',
@@ -112,6 +151,7 @@ export const homeContent = {
       },
       {
         title: 'Energy Solutions',
+        image: '/unifi-assets/edu1.jpg',
         description: 'Fully funded LED, heating, and solar upgrades with guaranteed savings and zero upfront costs.',
         bullets: [
           'Zero upfront investment',

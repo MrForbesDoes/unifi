@@ -1,6 +1,9 @@
-import type { ReactNode } from 'react';
+'use client';
 
+import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
+import { variants, COOL_EASE } from './motion';
 
 type CardProps = {
   children: ReactNode;
@@ -18,19 +21,23 @@ export default function Card({
   imageAlt = '',
 }: CardProps) {
   return (
-    <div
-      className={`group bg-white border border-gray-200 rounded-lg p-6 transition-all hover:-translate-y-0.5 hover:shadow-md ${className}`.trim()}
+    <motion.div
+      variants={variants.fadeInUp}
+      transition={{ duration: 0.8, ease: COOL_EASE }}
+      className={`group bg-white border border-gray-100 rounded-sm p-8 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-2xl hover:translate-y-[-4px] ${className}`.trim()}
     >
       {withImage ? (
-        <div className="overflow-hidden rounded-2xl">
+        <div className="overflow-hidden rounded-sm mb-8">
           <PlaceholderImage
             src={imageSrc}
             alt={imageAlt}
-            className="aspect-[16/9] mb-5 transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+            className="aspect-[16/10] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
           />
         </div>
       ) : null}
-      {children}
-    </div>
+      <div className="space-y-4">
+        {children}
+      </div>
+    </motion.div>
   );
 }

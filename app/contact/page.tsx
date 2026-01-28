@@ -1,71 +1,118 @@
-import Section from '@/src/components/Section';
-import PlaceholderImage from '@/src/components/PlaceholderImage';
-import Card from '@/src/components/Card';
+import { Metadata } from "next";
+import { Section } from "@/src/components/Section";
+import { ButtonLink } from "@/src/components/ButtonLink";
+import { CheckCircle2 } from "lucide-react";
 
-export default function Contact() {
+export const metadata: Metadata = {
+  title: "Contact Us | Book a Demo | Unifi.id",
+  description:
+    "Discover how Cortex™ can deliver smarter buildings, safer people, and greener futures for your organisation. Book a personalised demonstration or get in touch with our team.",
+};
+
+export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="min-h-[70vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <div className="flex flex-col lg:flex-row gap-10 items-start lg:items-center">
-            <div className="flex-1">
-              <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
-                Contact Us
-              </h1>
-              <div className="space-y-4 mb-8 max-w-3xl">
-                <p className="text-lg md:text-xl text-gray-600">Get in touch with our team</p>
-                <p className="text-lg md:text-xl text-gray-600">
-                  We're here to help answer your questions
-                </p>
-              </div>
-            </div>
+      <Section className="bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Contact Us / Book Demo
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600">
+            Discover how Cortex™ can deliver smarter buildings, safer people, and greener futures for your organisation. Book a personalised demonstration or get in touch with our team.
+          </p>
+        </div>
+      </Section>
 
-            <div className="flex-1 w-full">
-              <PlaceholderImage className="aspect-[4/3] lg:aspect-[3/2] shadow-sm" />
-            </div>
+      {/* Two-Column Card Grid */}
+      <Section>
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* Card 1: Book Your Demo */}
+          <div className="border-2 border-primary rounded-lg p-8 bg-white shadow-lg">
+            <h2 className="text-2xl font-bold text-primary mb-4">
+              Book Your Demo
+            </h2>
+            <p className="text-gray-600 mb-6">
+              See Cortex™ in action with a tailored demonstration that shows how our platform can address your specific building management challenges and opportunities.
+            </p>
+            <ul className="space-y-3 mb-8">
+              {[
+                "Personalised platform walkthrough",
+                "ROI analysis for your buildings",
+                "Integration planning discussion",
+                "Next steps guidance",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <ButtonLink href="/book-demo" variant="primary" className="w-full">
+              Book Demo
+            </ButtonLink>
+          </div>
+
+          {/* Card 2: Get in Touch */}
+          <div className="border-2 border-primary rounded-lg p-8 bg-white shadow-lg">
+            <h2 className="text-2xl font-bold text-primary mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Have questions about how Cortex™ can work for your organisation? Our team is here to help with expert guidance tailored to your specific needs.
+            </p>
+            <ul className="space-y-3 mb-8">
+              {[
+                "Technical consultations",
+                "Implementation planning",
+                "Partnership opportunities",
+                "Custom solution development",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <ButtonLink href="mailto:hello@unifi.id" variant="secondary" className="w-full">
+              Contact Us
+            </ButtonLink>
           </div>
         </div>
       </Section>
 
-      {/* Contact Information Section */}
-      <Section>
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-            Get In Touch
+      {/* Why Choose Section */}
+      <Section className="bg-gray-50">
+        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            Why Choose Cortex™?
           </h2>
-          <p className="text-base md:text-lg text-gray-700 mb-8">
-            Reach out to us through any of the following channels. We'll respond as soon as possible.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-              <p className="text-base md:text-lg text-gray-700">
-                Send us an email and we'll get back to you
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                People-First Design
+              </h3>
+              <p className="text-gray-600">
+                Every feature prioritises occupant wellbeing and experience
               </p>
-            </Card>
-            <Card>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Phone</h3>
-              <p className="text-base md:text-lg text-gray-700">Call us during business hours</p>
-            </Card>
-            <Card>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Office</h3>
-              <p className="text-base md:text-lg text-gray-700">Visit us at our headquarters</p>
-            </Card>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Proven Results
+              </h3>
+              <p className="text-gray-600">
+                Measurable improvements in efficiency, safety, and sustainability
+              </p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Seamless Integration
+              </h3>
+              <p className="text-gray-600">
+                Works with your existing systems without disruption
+              </p>
+            </div>
           </div>
-        </div>
-      </Section>
-
-      {/* Contact Form Section */}
-      <Section>
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-            Send Us a Message
-          </h2>
-          <p className="text-base md:text-lg text-gray-700">
-            Fill out the form below and we'll get back to you promptly. 
-            All fields are required to ensure we can assist you effectively.
-          </p>
         </div>
       </Section>
     </>

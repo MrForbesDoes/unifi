@@ -1,13 +1,15 @@
 'use client';
 
-import { MotionConfig, motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { COOL_EASE, DURATION_STANDARD } from './motion';
 
 interface SectionProps {
   children: ReactNode;
-  backgroundColor?: 'auto' | 'white' | 'gray';
+  backgroundColor?: 'auto' | 'white' | 'gray' | 'blue';
   className?: string;
   animate?: boolean;
+  stagger?: boolean;
 }
 
 export default function Section({
@@ -15,30 +17,42 @@ export default function Section({
   backgroundColor = 'auto',
   className = '',
   animate = true,
+  stagger = true,
 }: SectionProps) {
   const reduce = useReducedMotion();
 
   const bgClass =
     backgroundColor === 'gray'
-      ? 'bg-gray-50'
+      ? 'bg-unifi-light'
       : backgroundColor === 'white'
         ? 'bg-white'
-        : 'section-auto';
+        : backgroundColor === 'blue'
+          ? 'bg-unifi-blue text-white'
+          : 'section-auto';
 
-  const initial = reduce || !animate ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 };
-  const whileInView = reduce || !animate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 };
+  // If reduced motion or animate is false, we don't use variants
+  const sectionVariants = (reduce || !animate) ? {} : {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: {
+        duration: DURATION_STANDARD,
+        ease: COOL_EASE,
+        staggerChildren: stagger ? 0.15 : 0,
+        delayChildren: 0.1
+      }
+    }
+  };
 
   return (
-    <MotionConfig reducedMotion="user" transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
-      <motion.section
-        className={`${bgClass} py-20 md:py-28 ${className}`.trim()}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        {children}
-      </motion.section>
-    </MotionConfig>
+    <motion.section
+      className={`${bgClass} py-20 md:py-32 ${className}`.trim()}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={sectionVariants}
+    >
+      {children}
+    </motion.section>
   );
 }
-

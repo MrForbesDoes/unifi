@@ -3,9 +3,20 @@
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
+/**
+ * CoolPlanet-inspired Easing & Timing
+ * Heavy start, very smooth finish.
+ */
+export const COOL_EASE = [0.16, 1, 0.3, 1];
+export const DURATION_STANDARD = 0.8;
+export const DURATION_HERO = 1.2;
+
 export function MotionProvider({ children }: { children: ReactNode }) {
   return (
-    <MotionConfig reducedMotion="user" transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+    <MotionConfig 
+      reducedMotion="user" 
+      transition={{ duration: DURATION_STANDARD, ease: COOL_EASE }}
+    >
       {children}
     </MotionConfig>
   );
@@ -13,7 +24,32 @@ export function MotionProvider({ children }: { children: ReactNode }) {
 
 export const m = motion;
 
-export function useEnterVariants(direction: 'right' | 'left' | 'up' = 'right') {
+/**
+ * Shared Variants for Consistency
+ */
+export const variants = {
+  fadeInUp: {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+  },
+  maskReveal: {
+    initial: { y: "100%" },
+    animate: { y: 0 },
+  },
+  subtleScale: {
+    initial: { opacity: 0, scale: 1.05 },
+    animate: { opacity: 1, scale: 1 },
+  },
+  staggerContainer: {
+    animate: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  },
+};
+
+export function useEnterVariants(direction: 'right' | 'left' | 'up' = 'up') {
   const reduce = useReducedMotion();
 
   if (reduce) {
@@ -23,7 +59,7 @@ export function useEnterVariants(direction: 'right' | 'left' | 'up' = 'right') {
     };
   }
 
-  const offset = 24;
+  const offset = 30;
   const from =
     direction === 'right'
       ? { opacity: 0, x: offset, y: 0 }
@@ -34,5 +70,25 @@ export function useEnterVariants(direction: 'right' | 'left' | 'up' = 'right') {
   return {
     initial: from,
     animate: { opacity: 1, x: 0, y: 0 },
+    transition: { duration: DURATION_STANDARD, ease: COOL_EASE }
   };
+}
+
+/**
+ * Text Reveal Component for Headlines
+ */
+export function TextReveal({ children, className = "" }: { children: ReactNode, className?: string }) {
+  return (
+    <div className={`overflow-hidden ${className}`}>
+      <motion.div
+        variants={variants.maskReveal}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        transition={{ duration: DURATION_HERO, ease: COOL_EASE }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
 }

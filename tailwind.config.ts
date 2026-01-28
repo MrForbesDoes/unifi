@@ -5,6 +5,7 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -13,6 +14,12 @@ const config: Config = {
         display: ['var(--font-display)', 'var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       colors: {
+        unifi: {
+          blue: '#1e73be',
+          dark: '#333333',
+          gray: '#5a5a5a',
+          light: '#f9f9f9',
+        },
         ink: {
           50: '#F9FAFB',
           100: '#F3F4F6',

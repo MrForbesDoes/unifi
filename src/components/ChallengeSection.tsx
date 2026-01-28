@@ -15,7 +15,7 @@ export default function ChallengeSection() {
         </Text>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {homeContent.challenge.cards.map((card, index) => (
-            <Card key={index}>
+            <Card key={index} imageSrc={card.image}>
               <Text as="h3" variant="h3" className="mb-2">
                 {card.title}
               </Text>

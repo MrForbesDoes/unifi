@@ -16,14 +16,14 @@ export default function SolutionsSection() {
         </Text>
         <div className="grid md:grid-cols-3 gap-6">
           {homeContent.solutions.cards.map((card, index) => (
-            <Card key={index}>
+            <Card key={index} imageSrc={card.image}>
               <Text as="h3" variant="h3" className="mb-2">
                 {card.title}
               </Text>
               <Text variant="body" className="mb-4">
                 {card.description}
               </Text>
-              <ul className="list-disc list-inside text-base md:text-lg text-gray-700 mb-4 space-y-1">
+              <ul className="list-disc list-inside text-base md:text-lg text-gray-700 mb-6 space-y-1">
                 {card.bullets.map((bullet, bulletIndex) => (
                   <li key={bulletIndex}>{bullet}</li>
                 ))}

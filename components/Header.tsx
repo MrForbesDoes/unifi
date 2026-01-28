@@ -1,377 +1,152 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { m, useScroll, useMotionValueEvent } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 type NavLink = {
   href: string;
   label: string;
 };
 
-type NavGroup = {
-  label: string;
-  items: NavLink[];
-};
-
-function ChevronDown({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-      className={`h-4 w-4 ${className}`.trim()}
-    >
-      <path
-        fillRule="evenodd"
-        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.25a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<null | 'solutions' | 'roles' | 'energy'>(null);
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { scrollY } = useScroll();
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
-  const scheduleClose = () => {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = setTimeout(() => setOpenDropdown(null), 180);
-  };
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
-  const cancelClose = () => {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = null;
-  };
+  const navLinks: NavLink[] = useMemo(() => [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About Us' },
+    { href: '/platform/overview', label: 'Platform' },
+    { href: '/sectors/hub', label: 'Industries' },
+    { href: '/resources', label: 'Resources' },
+    { href: '/partners', label: 'Partners' },
+    { href: '/solutions/hub', label: 'Solutions' },
+    { href: '/roles/hub', label: 'Roles' },
+    { href: '/energy', label: 'Decarbonisation Hub' },
+    { href: '/contact', label: 'Contact' },
+  ], []);
 
-  const solutionsGroup: NavGroup = useMemo(
-    () => ({
-      label: 'Solutions',
-      items: [
-        { href: '/solutions/hub', label: 'Solutions Hub' },
-        { href: '/solutions/fireguard', label: 'FireGuard Platform' },
-        { href: '/solutions/insurelink', label: 'InsureLink' },
-      ],
-    }),
-    []
-  );
-
-  const rolesGroup: NavGroup = useMemo(
-    () => ({
-      label: 'Roles',
-      items: [
-        { href: '/roles/ceo', label: 'CEO' },
-        { href: '/roles/cfo', label: 'CFO' },
-        { href: '/roles/facilities', label: 'Facilities' },
-        { href: '/roles/esg-lead', label: 'ESG Lead' },
-        { href: '/roles/fire-safety', label: 'Fire Safety' },
-      ],
-    }),
-    []
-  );
-
-  const energyGroup: NavGroup = useMemo(
-    () => ({
-      label: 'Decarbonisation Hub',
-      items: [
-        { href: '/energy/technology', label: 'Our Technology' },
-        { href: '/energy/funding-options', label: 'Funding Options' },
-        { href: '/energy/monitoring', label: 'Energy Monitoring' },
-        { href: '/energy/the-energy-trap', label: 'The Energy Trap' },
-        { href: '/energy/energy-club', label: 'Unifi.id Energy Club' },
-        { href: '/energy/contact', label: 'Energy Contact' },
-      ],
-    }),
-    []
-  );
-
-  const topLinks: NavLink[] = useMemo(
-    () => [
-      { href: '/', label: 'Home' },
-      { href: '/about', label: 'About Us' },
-      { href: '/platform', label: 'Platform' },
-      { href: '/sectors', label: 'Industries' },
-      { href: '/resources', label: 'Resources' },
-      { href: '/partners', label: 'Partners' },
-      { href: '/contact', label: 'Contact / Book a Demo' },
-    ],
-    []
-  );
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((v) => !v);
-    setOpenDropdown(null);
-  };
-
-  const closeAll = () => {
-    cancelClose();
-    setOpenDropdown(null);
-    setIsMobileMenuOpen(false);
-  };
+  // Header is black if it's not the home page OR if it's scrolled on the home page
+  const isBlackHeader = !isHomePage || isScrolled;
 
   return (
-    <header className="border-b border-gray-800 bg-gray-950 text-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <m.header
+      initial={{ y: 0 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isBlackHeader 
+          ? 'bg-black border-b border-white/10 py-3' 
+          : 'bg-white/10 backdrop-blur-md border-b border-white/5 py-5'
+      }`}
+    >
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="inline-flex items-center" suppressHydrationWarning>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+            <Link href="/" className="inline-flex items-center">
               <img
                 src="/unifi-assets/logo.png"
                 alt="Unifi.id"
-                className="h-6 w-auto"
+                className={`transition-all duration-500 ${isBlackHeader ? 'h-10' : 'h-12'} w-auto brightness-0 invert`}
               />
             </Link>
           </div>
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-            {topLinks
-              .filter((l) => l.label !== 'Contact / Book a Demo')
-              .map((route) => (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  className="text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                >
-                  {route.label}
-                </Link>
-              ))}
-
-            {/* Solutions dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                cancelClose();
-                setOpenDropdown('solutions');
-              }}
-              onMouseLeave={() => {
-                if (openDropdown === 'solutions') scheduleClose();
-              }}
-            >
-              <button
-                type="button"
-                className="inline-flex items-center gap-1 text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                aria-haspopup="menu"
-                aria-expanded={openDropdown === 'solutions'}
-                onClick={() => setOpenDropdown((v) => (v === 'solutions' ? null : 'solutions'))}
-              >
-                <span>{solutionsGroup.label}</span>
-                <ChevronDown className={openDropdown === 'solutions' ? 'rotate-180 transition-transform' : 'transition-transform'} />
-              </button>
-              {openDropdown === 'solutions' && (
-                <div
-                  role="menu"
-                  onMouseEnter={cancelClose}
-                  onMouseLeave={scheduleClose}
-                  className="absolute z-50 mt-3 w-60 rounded-lg border border-gray-200 bg-white shadow-sm p-2"
-                >
-                  {solutionsGroup.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      role="menuitem"
-                      className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                      onClick={closeAll}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Roles dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                cancelClose();
-                setOpenDropdown('roles');
-              }}
-              onMouseLeave={() => {
-                if (openDropdown === 'roles') scheduleClose();
-              }}
-            >
-              <button
-                type="button"
-                className="inline-flex items-center gap-1 text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                aria-haspopup="menu"
-                aria-expanded={openDropdown === 'roles'}
-                onClick={() => setOpenDropdown((v) => (v === 'roles' ? null : 'roles'))}
-              >
-                <span>Roles</span>
-                <ChevronDown className={openDropdown === 'roles' ? 'rotate-180 transition-transform' : 'transition-transform'} />
-              </button>
-              {openDropdown === 'roles' && (
-                <div
-                  role="menu"
-                  onMouseEnter={cancelClose}
-                  onMouseLeave={scheduleClose}
-                  className="absolute z-50 mt-3 w-60 rounded-lg border border-gray-200 bg-white shadow-sm p-2"
-                >
-                  {rolesGroup.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      role="menuitem"
-                      className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                      onClick={closeAll}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Decarbonisation Hub dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                cancelClose();
-                setOpenDropdown('energy');
-              }}
-              onMouseLeave={() => {
-                if (openDropdown === 'energy') scheduleClose();
-              }}
-            >
-              <button
-                type="button"
-                className="inline-flex items-center gap-1 text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                aria-haspopup="menu"
-                aria-expanded={openDropdown === 'energy'}
-                onClick={() => setOpenDropdown((v) => (v === 'energy' ? null : 'energy'))}
-              >
-                <span>{energyGroup.label}</span>
-                <ChevronDown className={openDropdown === 'energy' ? 'rotate-180 transition-transform' : 'transition-transform'} />
-              </button>
-              {openDropdown === 'energy' && (
-                <div
-                  role="menu"
-                  onMouseEnter={cancelClose}
-                  onMouseLeave={scheduleClose}
-                  className="absolute z-50 mt-3 w-72 rounded-lg border border-gray-200 bg-white shadow-sm p-2"
-                >
-                  {energyGroup.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      role="menuitem"
-                      className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                      onClick={closeAll}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Contact link */}
+          {/* Desktop Navigation - Visible on medium screens and up */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <NavLinkItem key={link.href} link={link} />
+            ))}
+            
+            {/* Book a Demo Button */}
             <Link
               href="/contact"
-              className="text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-            >
-              Contact / Book a Demo
-            </Link>
-
-            {/* Book a Demo button */}
-            <Link
-              href="/contact"
-              className="inline-block px-5 py-2 rounded-lg bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors whitespace-nowrap"
+              className="px-8 py-2.5 rounded-sm font-bold text-sm uppercase tracking-wider bg-white text-black hover:bg-unifi-blue hover:text-white transition-all duration-300"
             >
               Book a Demo
             </Link>
           </nav>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMobileMenu}
-            className="md:hidden flex flex-col space-y-1.5 p-2"
-            aria-label="Toggle mobile menu"
+          {/* Mobile Menu Button - Only visible on small screens */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:bg-white/10 rounded transition-colors"
+            aria-label="Toggle menu"
           >
-            <span className="w-6 h-0.5 bg-gray-200"></span>
-            <span className="w-6 h-0.5 bg-gray-200"></span>
-            <span className="w-6 h-0.5 bg-gray-200"></span>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu Dropdown - Only visible on small screens when open */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden border-t border-gray-800 py-4">
-            <div className="flex flex-col space-y-4">
-              {topLinks.map((route) => (
+          <m.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden mt-4 pb-6 border-t border-white/10 pt-4"
+          >
+            <nav className="space-y-2">
+              {navLinks.map((link) => (
                 <Link
-                  key={route.href}
-                  href={route.href}
-                  onClick={closeAll}
-                  className="text-gray-200 hover:text-white transition-colors py-2"
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-3 px-4 text-sm font-bold uppercase tracking-wider text-white hover:bg-white/10 rounded transition-colors"
                 >
-                  {route.label}
+                  {link.label}
                 </Link>
               ))}
-
-              <div className="pt-2 border-t border-gray-800">
-                <div className="text-sm font-semibold text-white mb-2">Solutions</div>
-                <div className="flex flex-col">
-                  {solutionsGroup.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeAll}
-                      className="text-gray-200 hover:text-white transition-colors py-2"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-gray-800">
-                <div className="text-sm font-semibold text-white mb-2">Roles</div>
-                <div className="flex flex-col">
-                  {rolesGroup.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeAll}
-                      className="text-gray-200 hover:text-white transition-colors py-2"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-gray-800">
-                <div className="text-sm font-semibold text-white mb-2">Decarbonisation Hub</div>
-                <div className="flex flex-col">
-                  {energyGroup.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeAll}
-                      className="text-gray-200 hover:text-white transition-colors py-2"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
               <Link
                 href="/contact"
-                onClick={closeAll}
-                className="mt-2 inline-block px-5 py-3 rounded-lg bg-white text-gray-900 font-semibold hover:bg-gray-100 transition-colors text-center"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full px-8 py-3 mt-4 rounded-sm font-bold text-sm uppercase tracking-wider bg-white text-black hover:bg-unifi-blue hover:text-white transition-all duration-300 text-center"
               >
                 Book a Demo
               </Link>
-            </div>
-          </nav>
+            </nav>
+          </m.div>
         )}
       </div>
-    </header>
+    </m.header>
+  );
+}
+
+function NavLinkItem({ link }: { link: NavLink }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <Link
+      href={link.href}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative py-2 text-[11px] font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:text-white/80"
+    >
+      {link.label}
+      
+      {/* Unifi.id Style Hover Line Animation */}
+      <m.div
+        initial={false}
+        animate={{ 
+          width: isHovered ? '100%' : '0%',
+        }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-0 left-0 h-[2px] bg-white"
+      />
+    </Link>
   );
 }

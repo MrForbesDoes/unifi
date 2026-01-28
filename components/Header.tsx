@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 type NavLink = {
   href: string;
@@ -33,6 +33,17 @@ function ChevronDown({ className = '' }: { className?: string }) {
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<null | 'solutions' | 'roles' | 'energy'>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleClose = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => setOpenDropdown(null), 180);
+  };
+
+  const cancelClose = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = null;
+  };
 
   const solutionsGroup: NavGroup = useMemo(
     () => ({
@@ -94,6 +105,7 @@ export default function Header() {
   };
 
   const closeAll = () => {
+    cancelClose();
     setOpenDropdown(null);
     setIsMobileMenuOpen(false);
   };
@@ -131,8 +143,13 @@ export default function Header() {
             {/* Solutions dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown('solutions')}
-              onMouseLeave={() => setOpenDropdown((v) => (v === 'solutions' ? null : v))}
+              onMouseEnter={() => {
+                cancelClose();
+                setOpenDropdown('solutions');
+              }}
+              onMouseLeave={() => {
+                if (openDropdown === 'solutions') scheduleClose();
+              }}
             >
               <button
                 type="button"
@@ -147,6 +164,8 @@ export default function Header() {
               {openDropdown === 'solutions' && (
                 <div
                   role="menu"
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={scheduleClose}
                   className="absolute z-50 mt-3 w-60 rounded-lg border border-gray-200 bg-white shadow-sm p-2"
                 >
                   {solutionsGroup.items.map((item) => (
@@ -167,8 +186,13 @@ export default function Header() {
             {/* Roles dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown('roles')}
-              onMouseLeave={() => setOpenDropdown((v) => (v === 'roles' ? null : v))}
+              onMouseEnter={() => {
+                cancelClose();
+                setOpenDropdown('roles');
+              }}
+              onMouseLeave={() => {
+                if (openDropdown === 'roles') scheduleClose();
+              }}
             >
               <button
                 type="button"
@@ -183,6 +207,8 @@ export default function Header() {
               {openDropdown === 'roles' && (
                 <div
                   role="menu"
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={scheduleClose}
                   className="absolute z-50 mt-3 w-60 rounded-lg border border-gray-200 bg-white shadow-sm p-2"
                 >
                   {rolesGroup.items.map((item) => (
@@ -203,8 +229,13 @@ export default function Header() {
             {/* Decarbonisation Hub dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown('energy')}
-              onMouseLeave={() => setOpenDropdown((v) => (v === 'energy' ? null : v))}
+              onMouseEnter={() => {
+                cancelClose();
+                setOpenDropdown('energy');
+              }}
+              onMouseLeave={() => {
+                if (openDropdown === 'energy') scheduleClose();
+              }}
             >
               <button
                 type="button"
@@ -219,6 +250,8 @@ export default function Header() {
               {openDropdown === 'energy' && (
                 <div
                   role="menu"
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={scheduleClose}
                   className="absolute z-50 mt-3 w-72 rounded-lg border border-gray-200 bg-white shadow-sm p-2"
                 >
                   {energyGroup.items.map((item) => (

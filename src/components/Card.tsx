@@ -14,7 +14,7 @@ export default function Card({
   children,
   className = '',
   withImage = true,
-  imageSrc = '/placeholders/card-abstract.svg',
+  imageSrc = '/unifi-assets/Picture6.png',
   imageAlt = '',
 }: CardProps) {
   return (

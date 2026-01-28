@@ -102,10 +102,15 @@ export default function Header() {
     <header className="border-b border-gray-800 bg-gray-950 text-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo placeholder */}
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-semibold text-white">
-              Logo
+            <Link href="/" className="inline-flex items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/unifi-assets/logo.png"
+                alt="Unifi.id"
+                className="h-6 w-auto"
+              />
             </Link>
           </div>
 

@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import type { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { Hotel, Users, Shield, Lock, CreditCard } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 export default function RetailSector() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Hospitality & Retail Sector | Luxury Building Intelligence"
+        description="Cortex™ delivers discreet intelligence for hospitality and members clubs. Maintain premium guest experiences while ensuring invisible safety and compliance."
+      />
       {/* Hero */}
       <Section className="bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -159,6 +162,6 @@ export default function RetailSector() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

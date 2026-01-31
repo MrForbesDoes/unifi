@@ -8,7 +8,7 @@ interface SEOProps {
   ogType?: string;
 }
 
-export default function SEO({
+export function SEO({
   title = "Unifi.id | Movement Intelligence & Building Awareness",
   description = "Unifi.id provides real-time movement intelligence and building awareness solutions for security, fire safety, and sustainability.",
   canonical = "https://unifi.id",

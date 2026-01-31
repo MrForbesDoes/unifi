@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import type { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
-import { Factory, AlertTriangle, Shield, TrendingUp, FileCheck } from "lucide-react";
-
+import { Factory, AlertTriangle, Shield, TrendingUp } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function IndustrialSector() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Industrial Sector | Operational Intelligence for High-Risk Facilities"
+        description="Cortex™ provides operational intelligence for industrial facilities. Protect workers, ensure HSE compliance, and drive efficiency in complex environments."
+      />
       {/* Hero */}
       <Section className="bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -159,6 +162,6 @@ export default function IndustrialSector() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

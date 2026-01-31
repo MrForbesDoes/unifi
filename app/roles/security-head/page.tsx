@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { Shield, Eye, Users, Bell } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleSecurityHead() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Security Head | Data-Led Physical Security Intelligence"
+        description="Cortex™ provides the real-time presence intelligence needed to transform physical security into a proactive, data-led operation. Gain total building awareness."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -127,7 +132,7 @@ export default function RoleSecurityHead() {
                 ))}
               </ul>
               <div className="mt-10">
-                <ButtonLink href="/contact" className="w-full text-center">Request Security Audit</ButtonLink>
+                <ButtonLink href="/contact" className="w-full text-center">Book Security Demo</ButtonLink>
               </div>
             </div>
           </div>
@@ -147,6 +152,6 @@ export default function RoleSecurityHead() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

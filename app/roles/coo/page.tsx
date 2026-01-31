@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { Settings, Layers, Zap, Activity } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleCOO() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="COO & Operations Director | Operational Building Intelligence"
+        description="Cortex™ translates fragmented building data into a unified operational command centre. Drive efficiency at scale and standardise workflows across your entire portfolio."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -147,6 +152,6 @@ export default function RoleCOO() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

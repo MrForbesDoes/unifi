@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { AlertTriangle, Shield, ClipboardCheck, Users, Activity, Bell } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function SolutionsFireguard() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="FireGuard™ | Proactive Fire Safety & Compliance Intelligence"
+        description="FireGuard™ delivers proactive and verifiable fire safety compliance for estates teams. Move from reactive checks to clear control, accountability, and reporting."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -194,6 +199,6 @@ export default function SolutionsFireguard() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

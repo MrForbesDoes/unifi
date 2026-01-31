@@ -1,11 +1,9 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-
-
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { useState } from "react";
-import { Metadata } from "next";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
+import { SEO } from "@/src/components/SEO";
 import { 
   Shield, AlertTriangle, Users, TrendingUp, Brain, Zap, 
   Radio, Footprints, Eye, Wifi, Layers, Network, Cpu,
@@ -27,7 +25,11 @@ export default function SolutionsHub() {
   const [fireSubTab, setFireSubTab] = useState<FireSubTab>("overview");
 
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Solutions Hub | Smart Building & Fire Safety Solutions"
+        description="Explore Unifi.id's suite of modular technologies designed to make your building safer, smarter, and more efficient. From occupancy intelligence to fire safety."
+      />
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -80,7 +82,7 @@ export default function SolutionsHub() {
           {mainTab === "fire" && <FireTab subTab={fireSubTab} setSubTab={setFireSubTab} />}
         </div>
       </Section>
-    </>
+    </main>
   );
 }
 
@@ -157,7 +159,7 @@ function SolutionsTab({ subTab, setSubTab }: { subTab: SolutionsSubTab; setSubTa
   );
 }
 
-// Solutions Overview
+// Sub-components for Solutions Tab
 function SolutionsOverview({ setSubTab }: { setSubTab: (tab: SolutionsSubTab) => void }) {
   const modules = [
     {
@@ -203,442 +205,335 @@ function SolutionsOverview({ setSubTab }: { setSubTab: (tab: SolutionsSubTab) =>
   ];
 
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-6">Our Intelligence Modules turn building data into action</H3>
-      <p className="text-gray-700 mb-8">
-        From live occupancy tracking to predictive insights, each module focuses on a specific area of safety, security, and performance — giving you targeted solutions that work together as one intelligent platform.
-      </p>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {modules.map((module) => {
-          const Icon = module.icon;
-          return (
-            <div key={module.title} className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
-              <div className={`w-12 h-12 rounded-lg ${module.color} flex items-center justify-center mb-4`}>
-                <Icon className="h-6 w-6" />
-              </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">{module.title}</h4>
-              <p className="text-gray-600 mb-4">{module.description}</p>
-              <ul className="space-y-2 mb-4">
-                {module.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-primary mt-1">✓</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={() => setSubTab(module.tab)}
-                className="text-primary font-semibold hover:underline"
-              >
-                Learn More →
-              </button>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {modules.map((module) => {
+        const Icon = module.icon;
+        return (
+          <div key={module.title} className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
+            <div className={`w-12 h-12 rounded-lg ${module.color} flex items-center justify-center mb-4`}>
+              <Icon className="h-6 w-6" />
             </div>
-          );
-        })}
-      </div>
-
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
-        <p className="text-gray-700 mb-4">
-          Discover how our intelligence modules can transform your building operations and provide the insights you need.
-        </p>
-        <ButtonLink href="/contact" variant="primary">
-          Book a Demo
-        </ButtonLink>
-      </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">{module.title}</h4>
+            <p className="text-gray-600 mb-4">{module.description}</p>
+            <ul className="space-y-2 mb-6">
+              {module.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2 text-sm text-gray-700">
+                  <span className="text-primary mt-1">✓</span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setSubTab(module.tab)}
+              className="text-primary font-semibold hover:underline"
+            >
+              Learn More →
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-// Access & Security Content
 function AccessSecurity() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Access Control & Security</H3>
-      <p className="text-gray-700 mb-6">
-        Protect your building with intelligent access control and real-time security monitoring. Detect tailgating, unauthorized access, and security threats before they become incidents.
-      </p>
-
-      <div className="bg-white border border-gray-200 rounded-lg p-8 mb-6">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
-            <Shield className="h-8 w-8 text-slate-700" />
-          </div>
+    <div className="space-y-8">
+      <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+        <H3 className="text-2xl font-bold text-slate-900 mb-4">SafeGuard: Dynamic Access & Security</H3>
+        <p className="text-slate-700 mb-6">
+          SafeGuard transforms traditional access control into a dynamic, responsive security layer. By integrating real-time occupancy data with your existing security infrastructure, SafeGuard detects anomalies, prevents tailgating, and ensures that only authorized personnel are in specific zones at any given time.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">SafeGuard</h4>
-            <p className="text-lg text-primary font-semibold mb-3">More Than Access Control — Security That Thinks</p>
-            <p className="text-gray-700">
-              SafeGuard transforms traditional access systems into intelligent, adaptive security platforms. By overlaying our real-time occupancy and recognition capabilities, your buildings gain the ability to spot risks, verify identity instantly, and act on anomalies — before they become incidents.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
+            <h4 className="font-bold text-slate-900 mb-3">Key Capabilities</h4>
             <ul className="space-y-2">
-              {["Tailgating and unauthorised access detection", "Real-time visibility beyond access points", "Facial recognition validation", "Anti-passback enforcement", "Custom rule-based alerting"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Real-time tailgating and piggybacking detection</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Automated zone-based access restrictions</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Behavioral anomaly detection and alerting</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Seamless integration with leading VMS and ACS platforms</span>
+              </li>
             </ul>
           </div>
           <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
+            <h4 className="font-bold text-slate-900 mb-3">Use Cases</h4>
             <ul className="space-y-2">
-              {["Seamless integration with Acre/TDS", "Visitor and contractor monitoring", "After-hours alerts", "Role-based access tracking"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Compatible With</h5>
-            <ul className="space-y-2">
-              {["Pulse (occupancy verification)", "Cognito (ID authentication)", "LiveView (centralised monitoring)"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>High-security zone protection in corporate offices</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Automated visitor tracking and management</span>
+              </li>
+              <li className="flex items-start gap-2 text-slate-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Contractor monitoring and compliance verification</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
-        <p className="text-gray-700 mb-4">
-          Discover how our access control & security solutions can transform your building operations.
-        </p>
-        <ButtonLink href="/contact" variant="primary">
-          Book a Demo
-        </ButtonLink>
+      <div className="text-center">
+        <ButtonLink href="/contact">Book a Demo</ButtonLink>
       </div>
     </div>
   );
 }
 
-// Fire Safety Content
 function FireSafety() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Fire Safety & Evacuation</H3>
-      <p className="text-gray-700 mb-6">
-        Ensure fire safety compliance and real-time evacuation monitoring. Know who's evacuated, who's still inside, and coordinate emergency response with confidence.
-      </p>
-
-      <div className="bg-white border border-gray-200 rounded-lg p-8 mb-6">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-            <AlertTriangle className="h-8 w-8 text-orange-700" />
-          </div>
+    <div className="space-y-8">
+      <div className="bg-orange-50 p-8 rounded-xl border border-orange-200">
+        <H3 className="text-2xl font-bold text-orange-900 mb-4">FireSafe: Intelligence-Led Fire Safety</H3>
+        <p className="text-orange-700 mb-6">
+          FireSafe provides the critical intelligence layer needed for modern fire safety management. By connecting fire panels with real-time occupancy data, FireSafe enables precise evacuation management, automated compliance reporting, and command-level visibility during emergencies.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">FireSafe</h4>
-            <p className="text-lg text-primary font-semibold mb-3">From Compliance to Command — Live Fire Strategy Intelligence</p>
-            <p className="text-gray-700">
-              FireSafe elevates your fire safety approach from checklist compliance to live, operational strategy. With zone-by-zone presence data and dynamic muster reports, you gain command-level visibility when it matters most — and verifiable compliance the rest of the time.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
+            <h4 className="font-bold text-orange-900 mb-3">Key Capabilities</h4>
             <ul className="space-y-2">
-              {["Live evacuation monitoring", "Real-time occupancy-based roll calls", "Muster point alerts and tracking", "Fire panel integration", "Incident playback and documentation"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Live evacuation progress monitoring by floor and zone</span>
+              </li>
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Automated real-time roll calls and muster point tracking</span>
+              </li>
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Instant identification of missing or trapped persons</span>
+              </li>
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Digital fire logbook and compliance automation</span>
+              </li>
             </ul>
           </div>
           <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
+            <h4 className="font-bold text-orange-900 mb-3">Use Cases</h4>
             <ul className="space-y-2">
-              {["Faster, safer evacuations", "Automated muster management", "Insurance reporting", "Fire-safe crowd density tracking"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Compatible With</h5>
-            <ul className="space-y-2">
-              {["FireSure (risk visibility)", "Pulse (live headcount)", "LiveView (incident dashboard)", "Fire alarm panels"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Complex multi-tenanted building evacuations</span>
+              </li>
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>High-occupancy venue safety management</span>
+              </li>
+              <li className="flex items-start gap-2 text-orange-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Automated fire drill performance auditing</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
-        <p className="text-gray-700 mb-4">
-          Discover how our fire safety & evacuation solutions can transform your building operations.
-        </p>
-        <ButtonLink href="/contact" variant="primary">
-          Book a Demo
-        </ButtonLink>
+      <div className="text-center">
+        <ButtonLink href="/solutions/fireguard">Explore FireGuard Platform</ButtonLink>
       </div>
     </div>
   );
 }
 
-// Live Occupancy Content
 function LiveOccupancy() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Live Occupancy Intelligence</H3>
-      <p className="text-gray-700 mb-6">
-        Track people-flow in real time across floors and zones. Make smarter decisions about staffing, cleaning, heating/cooling, and safety drills with accurate occupancy data.
-      </p>
-
-      <div className="bg-white border border-gray-200 rounded-lg p-8 mb-6">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-            <Users className="h-8 w-8 text-blue-700" />
-          </div>
+    <div className="space-y-8">
+      <div className="bg-blue-50 p-8 rounded-xl border border-blue-200">
+        <H3 className="text-2xl font-bold text-blue-900 mb-4">Pulse: Real-Time Occupancy Intelligence</H3>
+        <p className="text-blue-700 mb-6">
+          Pulse is the foundation of the Unifi.id ecosystem, providing a continuous, real-time audit of building occupancy. By aggregating data from multiple detection technologies, Pulse delivers a single source of truth for how your spaces are being used right now.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">Pulse</h4>
-            <p className="text-lg text-primary font-semibold mb-3">Know who's in your building — zone-by-zone, moment-by-moment</p>
-            <p className="text-gray-700">
-              Pulse uses RFID-enabled cards or cardholders to provide live visibility of occupants across every zone of your building. This isn't access control — it's true presence intelligence that powers smarter operations, safety, and space optimisation.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
+            <h4 className="font-bold text-blue-900 mb-3">Key Capabilities</h4>
             <ul className="space-y-2">
-              {["Live headcounts by floor/zone", "Time-in-location tracking", "LiveView integration", "Privacy-first architecture"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Live headcount and density monitoring across all zones</span>
+              </li>
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Historical usage pattern analysis and benchmarking</span>
+              </li>
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Automated alerts for over-capacity or irregular usage</span>
+              </li>
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Executive-ready occupancy dashboards and reports</span>
+              </li>
             </ul>
           </div>
           <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
+            <h4 className="font-bold text-blue-900 mb-3">Use Cases</h4>
             <ul className="space-y-2">
-              {["Real-time fire safety roll call", "Hybrid workforce planning", "Desk utilisation", "Security escalation triggers"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Compatible With</h5>
-            <ul className="space-y-2">
-              {["All major RFID card systems", "Access control systems", "LiveView, FireSafe, Predict"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Dynamic space planning and desk management</span>
+              </li>
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Cleaning and maintenance schedule optimization</span>
+              </li>
+              <li className="flex items-start gap-2 text-blue-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Retail and hospitality flow analysis</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
-        <p className="text-gray-700 mb-4">
-          Discover how our live occupancy intelligence solutions can transform your building operations.
-        </p>
-        <ButtonLink href="/contact" variant="primary">
-          Book a Demo
-        </ButtonLink>
+      <div className="text-center">
+        <ButtonLink href="/contact">Learn More About Pulse</ButtonLink>
       </div>
     </div>
   );
 }
 
-// Operational Insights Content
 function OperationalInsights() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Operational Insights</H3>
-      <p className="text-gray-700 mb-6">
-        Benchmark usage, spot trends, and feed predictive models. All insights available in clear, executive-ready dashboards or automated reports.
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center mb-4">
-            <TrendingUp className="h-6 w-6 text-green-700" />
-          </div>
-          <h4 className="text-xl font-bold text-gray-900 mb-2">Predict</h4>
-          <p className="text-gray-600 mb-4">Predictive building intelligence for capacity planning and forecasting.</p>
-          <ul className="space-y-2 mb-4">
-            {["Capacity forecasting", "Trend analysis", "Predictive alerts", "Resource optimization"].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary mt-1">✓</span>
-                <span>{item}</span>
+    <div className="space-y-8">
+      <div className="bg-purple-50 p-8 rounded-xl border border-purple-200">
+        <H3 className="text-2xl font-bold text-purple-900 mb-4">Predict & Insights: Behavioral Analytics</H3>
+        <p className="text-purple-700 mb-6">
+          Our advanced analytics modules go beyond simple data collection to provide deep behavioral insights and predictive intelligence. By understanding the 'why' behind building usage, you can make proactive decisions that optimize performance and enhance occupant experience.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 className="font-bold text-purple-900 mb-3">Key Capabilities</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Predictive occupancy forecasting based on historical data</span>
               </li>
-            ))}
-          </ul>
-          <ButtonLink href="/contact" variant="outline">
-            Learn More
-          </ButtonLink>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-            <Brain className="h-6 w-6 text-purple-700" />
-          </div>
-          <h4 className="text-xl font-bold text-gray-900 mb-2">Insights</h4>
-          <p className="text-gray-600 mb-4">Behavioral analytics for space optimization and predictive intelligence.</p>
-          <ul className="space-y-2 mb-4">
-            {["Space utilization", "Behavioral patterns", "Usage analytics", "Optimization recommendations"].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary mt-1">✓</span>
-                <span>{item}</span>
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Behavioral pattern recognition and anomaly detection</span>
               </li>
-            ))}
-          </ul>
-          <ButtonLink href="/contact" variant="outline">
-            Learn More
-          </ButtonLink>
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Space utilization optimization recommendations</span>
+              </li>
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Cross-estate performance benchmarking</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-purple-900 mb-3">Use Cases</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Long-term estate rationalization and planning</span>
+              </li>
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Workplace experience enhancement strategies</span>
+              </li>
+              <li className="flex items-start gap-2 text-purple-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Operational resilience and risk management</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
-        <p className="text-gray-700 mb-4">
-          Discover how our operational insights solutions can transform your building operations.
-        </p>
-        <ButtonLink href="/contact" variant="primary">
-          Book a Demo
-        </ButtonLink>
+      <div className="text-center">
+        <ButtonLink href="/contact">Learn More About Insights</ButtonLink>
       </div>
     </div>
   );
 }
 
-// Energy Performance Content
 function EnergyPerformance() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Energy Performance</H3>
-      <p className="text-gray-700 mb-6">
-        Reduce waste by syncing lighting, HVAC and more to actual use. Our intelligence identifies inefficiencies and recommends corrective actions based on real occupancy patterns.
-      </p>
-
-      <div className="bg-white border border-gray-200 rounded-lg p-8 mb-6">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-yellow-100 flex items-center justify-center flex-shrink-0">
-            <Zap className="h-8 w-8 text-yellow-700" />
-          </div>
+    <div className="space-y-8">
+      <div className="bg-green-50 p-8 rounded-xl border border-green-200">
+        <H3 className="text-2xl font-bold text-green-900 mb-4">Flow: Demand-Driven Energy Optimization</H3>
+        <p className="text-green-700 mb-6">
+          Flow aligns your building's energy consumption with actual human demand. By providing real-time occupancy signals to your BMS, lighting, and HVAC systems, Flow eliminates the waste of heating and lighting empty spaces, delivering immediate carbon and cost reductions.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">Energy Intelligence</h4>
-            <p className="text-gray-700">
-              Optimize energy consumption using real occupancy data and intelligent automation.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Features</h5>
+            <h4 className="font-bold text-green-900 mb-3">Key Capabilities</h4>
             <ul className="space-y-2">
-              {["HVAC optimization", "Lighting automation", "Energy waste detection", "Carbon footprint reduction"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Real-time occupancy-based HVAC and lighting control</span>
+              </li>
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Measurable carbon reduction tracking and reporting</span>
+              </li>
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Integration with existing building management systems</span>
+              </li>
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>ESG compliance data and performance verification</span>
+              </li>
             </ul>
           </div>
           <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Benefits</h5>
+            <h4 className="font-bold text-green-900 mb-3">Use Cases</h4>
             <ul className="space-y-2">
-              {["Reduce energy costs by 20-40%", "Meet ESG targets", "Improve occupant comfort", "Real-time monitoring"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Net-zero transition and decarbonization initiatives</span>
+              </li>
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Operational cost reduction in large estates</span>
+              </li>
+              <li className="flex items-start gap-2 text-green-700">
+                <span className="text-primary mt-1">•</span>
+                <span>Green building certification support (LEED, BREEAM)</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
-        <p className="text-gray-700 mb-4">
-          Discover how our energy performance solutions can transform your building operations.
-        </p>
-        <ButtonLink href="/contact" variant="primary">
-          Book a Demo
-        </ButtonLink>
+      <div className="text-center">
+        <ButtonLink href="/energy/hub">Explore Energy Solutions</ButtonLink>
       </div>
     </div>
   );
 }
 
-// Detection Technologies Tab Component
+// Detection Tab Component
 function DetectionTab({ subTab, setSubTab }: { subTab: DetectionSubTab; setSubTab: (tab: DetectionSubTab) => void }) {
   return (
     <div>
-      {/* Detection Hero */}
       <div className="mb-8">
-        <H2 className="text-3xl font-bold text-gray-900 mb-4">Detection Technologies: Capturing the Signals That Matter</H2>
-        <div className="space-y-4 text-gray-700">
-          <p>
-            Every building tells its story through countless small signals — a badge swipe, a face recognised, a movement in a corridor, a phone connecting to WiFi. But no single detection method sees everything.
-          </p>
-          <p>
-            That's why Unifi.id offers a suite of complementary Detection Modules — each designed to capture presence in a different way, and each able to work seamlessly with our Intelligence Modules to deliver the full picture.
-          </p>
-          <ul className="space-y-2">
-            <li className="flex items-start gap-2">
-              <span className="text-primary mt-1">•</span>
-              <span><strong>Sense</strong> – Passive RFID detection for silent, unobtrusive presence awareness.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary mt-1">•</span>
-              <span><strong>Flow</strong> – 3D vision-based counting and movement analysis.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary mt-1">•</span>
-              <span><strong>Cognito</strong> – Discreet facial recognition for identity-aware experiences.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary mt-1">•</span>
-              <span><strong>Echo</strong> – WiFi-based passive device detection for ambient awareness.</span>
-            </li>
-          </ul>
-          <p className="italic">
-            Whether it's a single floor or a complex, multi-site estate, we help you choose the right mix of detection layers to match your operational needs, privacy requirements, and building complexity — so you can trust every presence signal, every time.
-          </p>
-        </div>
+        <H2 className="text-3xl font-bold text-gray-900 mb-4">The Eyes and Ears of Your Building</H2>
+        <p className="text-gray-700 mb-6">
+          To act intelligently, a building must first be able to see and hear. Unifi.id's Detection Technologies provide the high-fidelity data needed to power our intelligence modules, using a range of non-intrusive sensors to capture occupancy, movement, and environmental signals.
+        </p>
       </div>
 
-      {/* Sub Tabs */}
       <div className="flex flex-wrap gap-2 mb-8">
         {[
           { id: "overview" as const, label: "Overview" },
-          { id: "sense" as const, label: "Sense (RFID)" },
-          { id: "flow" as const, label: "Flow (Vision)" },
-          { id: "cognito" as const, label: "Cognito (Facial)" },
-          { id: "echo" as const, label: "Echo (WiFi)" },
+          { id: "sense" as const, label: "Sense" },
+          { id: "flow" as const, label: "Flow" },
+          { id: "cognito" as const, label: "Cognito" },
+          { id: "echo" as const, label: "Echo" },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -654,429 +549,228 @@ function DetectionTab({ subTab, setSubTab }: { subTab: DetectionSubTab; setSubTa
         ))}
       </div>
 
-      {/* Sub Tab Content */}
       {subTab === "overview" && <DetectionOverview setSubTab={setSubTab} />}
-      {subTab === "sense" && <SenseDetection />}
-      {subTab === "flow" && <FlowDetection />}
-      {subTab === "cognito" && <CognitoDetection />}
-      {subTab === "echo" && <EchoDetection />}
+      {subTab === "sense" && <SenseTech />}
+      {subTab === "flow" && <FlowTech />}
+      {subTab === "cognito" && <CognitoTech />}
+      {subTab === "echo" && <EchoTech />}
     </div>
   );
 }
 
-// Detection Overview
 function DetectionOverview({ setSubTab }: { setSubTab: (tab: DetectionSubTab) => void }) {
-  const detectionMethods = [
+  const techs = [
     {
       icon: Radio,
-      color: "bg-blue-100 text-blue-700",
       title: "Sense",
-      method: "RFID-based Detection",
-      description: "Seamless Detection. Zero Effort. Real-Time Presence — Sense uses passive RFID detection to identify presence in and around your buildings without any manual input from users.",
+      desc: "Multi-sensor environmental and occupancy detection.",
       tab: "sense" as const,
     },
     {
       icon: Footprints,
-      color: "bg-green-100 text-green-700",
       title: "Flow",
-      method: "Anonymous Footfall Analytics",
-      description: "Movement Intelligence. Privacy First. Actionable Insights — Flow captures anonymous movement patterns and behavioral analytics to optimize space utilization.",
+      desc: "High-precision people counting and movement analytics.",
       tab: "flow" as const,
     },
     {
       icon: Eye,
-      color: "bg-purple-100 text-purple-700",
       title: "Cognito",
-      method: "Facial Recognition",
-      description: "Identity Intelligence. Instant Verification. Enhanced Security — Cognito provides advanced facial recognition and identity intelligence.",
+      desc: "AI-powered visual intelligence and behavioral analysis.",
       tab: "cognito" as const,
     },
     {
       icon: Wifi,
-      color: "bg-indigo-100 text-indigo-700",
       title: "Echo",
-      method: "WiFi Device Detection",
-      description: "The Digital Whisper Layer — Echo uses passive WiFi detection to identify presence based on the quiet digital signals devices emit.",
+      desc: "Acoustic monitoring and sound-based event detection.",
       tab: "echo" as const,
     },
   ];
 
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-6">Layered Detection Architecture</H3>
-      <p className="text-gray-700 mb-8">
-        No single detection method is perfect. Layer multiple technologies to close gaps, increase confidence, and ensure comprehensive coverage.
-      </p>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {detectionMethods.map((method) => {
-          const Icon = method.icon;
-          return (
-            <div key={method.title} className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
-              <div className={`w-12 h-12 rounded-lg ${method.color} flex items-center justify-center mb-4`}>
-                <Icon className="h-6 w-6" />
-              </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">{method.title}</h4>
-              <p className="text-sm text-gray-600 mb-3">{method.method}</p>
-              <p className="text-gray-700 mb-4 text-sm">{method.description}</p>
-              <button
-                onClick={() => setSubTab(method.tab)}
-                className="text-primary font-semibold hover:underline text-sm"
-              >
-                Learn More →
-              </button>
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {techs.map((tech) => {
+        const Icon = tech.icon;
+        return (
+          <div key={tech.title} className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center mb-4">
+              <Icon className="h-6 w-6" />
             </div>
-          );
-        })}
-      </div>
-
-      <div className="bg-gradient-to-r from-primary to-blue-600 rounded-lg p-6 text-white">
-        <h4 className="text-xl font-bold mb-3">Best Practice: Layer Detection Methods</h4>
-        <p>
-          For maximum confidence in fire safety, combine Sense (RFID) + Echo (WiFi) for comprehensive evacuation validation. For security, layer Cognito (facial recognition) + Sense (access cards) for dual-factor verification.
-        </p>
-      </div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">{tech.title}</h4>
+            <p className="text-gray-600 mb-4 text-sm">{tech.desc}</p>
+            <button
+              onClick={() => setSubTab(tech.tab)}
+              className="text-primary font-semibold hover:underline text-sm"
+            >
+              Learn More →
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-// Individual Detection Method Components (simplified for brevity)
-function SenseDetection() {
+function SenseTech() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Sense - RFID Detection</H3>
-      <div className="bg-white border border-gray-200 rounded-lg p-8">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-            <Radio className="h-8 w-8 text-blue-700" />
-          </div>
-          <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">Sense</h4>
-            <p className="text-lg text-primary font-semibold mb-3">Seamless Detection. Zero Effort. Real-Time Presence</p>
-            <p className="text-gray-700">
-              Sense uses passive RFID detection to identify presence in and around your buildings without any manual input from users. No door swipes, no camera feeds—just continuous, anonymous awareness of where people are.
-            </p>
-          </div>
+    <div className="bg-white p-8 rounded-xl border border-gray-200">
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Sense: Environmental & Occupancy Detection</H3>
+      <p className="text-gray-700 mb-6">
+        Sense is our multi-sensor detection technology that monitors both human presence and environmental conditions. By combining PIR, temperature, humidity, and light sensors into a single device, Sense provides a comprehensive view of how a space is being used and its current state.
+      </p>
+      <div className="grid md:grid-cols-2 gap-8">
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Key Capabilities</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• High-sensitivity motion and presence detection</li>
+            <li>• Real-time environmental monitoring (Temp, Humidity, CO2)</li>
+            <li>• Ambient light level sensing for automated lighting control</li>
+            <li>• Battery-powered or hardwired deployment options</li>
+          </ul>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
-            <ul className="space-y-2">
-              {["Passive RFID-based presence detection", "Entry and zone-level awareness", "Zero user interaction required", "Works with badges and wearables"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
-            <ul className="space-y-2">
-              {["Fire safety roll calls", "Zone occupancy tracking", "Access verification", "Visitor management"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Use Cases</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Meeting room and workspace occupancy tracking</li>
+            <li>• Environmental compliance monitoring in healthcare</li>
+            <li>• Energy-saving lighting and HVAC automation</li>
+          </ul>
         </div>
-      </div>
-      <div className="mt-6 bg-gray-50 rounded-lg p-6 text-center">
-        <ButtonLink href="/contact" variant="primary">Book a Demo</ButtonLink>
       </div>
     </div>
   );
 }
 
-function FlowDetection() {
+function FlowTech() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Flow - Vision-Based Analytics</H3>
-      <div className="bg-white border border-gray-200 rounded-lg p-8">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
-            <Footprints className="h-8 w-8 text-green-700" />
-          </div>
-          <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">Flow</h4>
-            <p className="text-lg text-primary font-semibold mb-3">Movement Intelligence. Privacy First.</p>
-            <p className="text-gray-700">
-              Flow captures anonymous movement patterns and behavioral analytics to optimize space utilization without compromising individual privacy.
-            </p>
-          </div>
+    <div className="bg-white p-8 rounded-xl border border-gray-200">
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Flow: People Counting & Movement Analytics</H3>
+      <p className="text-gray-700 mb-6">
+        Flow uses high-precision sensors to track the movement of people through entrances, corridors, and specific zones. It provides the granular data needed for accurate headcount, flow analysis, and density monitoring without compromising individual privacy.
+      </p>
+      <div className="grid md:grid-cols-2 gap-8">
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Key Capabilities</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Bi-directional people counting with 99%+ accuracy</li>
+            <li>• Real-time queue and dwell time monitoring</li>
+            <li>• Heatmapping and flow path analysis</li>
+            <li>• Privacy-by-design (no PII captured)</li>
+          </ul>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
-            <ul className="space-y-2">
-              {["3D vision-based counting", "Anonymous movement tracking", "Crowd density monitoring", "Privacy-preserving analytics"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
-            <ul className="space-y-2">
-              {["Retail footfall analysis", "Crowd management", "Space optimization", "Queue monitoring"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Use Cases</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Retail and hospitality footfall analysis</li>
+            <li>• Public sector estate utilization auditing</li>
+            <li>• Emergency evacuation flow management</li>
+          </ul>
         </div>
-      </div>
-      <div className="mt-6 bg-gray-50 rounded-lg p-6 text-center">
-        <ButtonLink href="/contact" variant="primary">Book a Demo</ButtonLink>
       </div>
     </div>
   );
 }
 
-function CognitoDetection() {
+function CognitoTech() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Cognito - Facial Recognition</H3>
-      <div className="bg-white border border-gray-200 rounded-lg p-8">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-            <Eye className="h-8 w-8 text-purple-700" />
-          </div>
-          <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">Cognito</h4>
-            <p className="text-lg text-primary font-semibold mb-3">Identity Intelligence. Instant Verification.</p>
-            <p className="text-gray-700">
-              Cognito provides advanced facial recognition and identity intelligence, enabling instant verification and seamless access control.
-            </p>
-          </div>
+    <div className="bg-white p-8 rounded-xl border border-gray-200">
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Cognito: AI-Powered Visual Intelligence</H3>
+      <p className="text-gray-700 mb-6">
+        Cognito applies advanced computer vision and AI to existing or new camera feeds to identify complex behaviors and events. From tailgating detection to PPE compliance, Cognito turns visual data into actionable security and operational intelligence.
+      </p>
+      <div className="grid md:grid-cols-2 gap-8">
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Key Capabilities</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Automated tailgating and piggybacking detection</li>
+            <li>• Object recognition (e.g., blocked fire exits, left luggage)</li>
+            <li>• Behavioral anomaly detection (e.g., falls, aggression)</li>
+            <li>• GDPR-compliant face blurring and anonymization</li>
+          </ul>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
-            <ul className="space-y-2">
-              {["Advanced facial recognition", "Instant identity verification", "Works with face coverings", "Multi-factor authentication"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
-            <ul className="space-y-2">
-              {["High-security access control", "VIP recognition", "Watchlist monitoring", "Frictionless entry"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Use Cases</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• High-security entrance monitoring</li>
+            <li>• Health and safety compliance auditing</li>
+            <li>• VIP recognition and high-touch service alerts</li>
+          </ul>
         </div>
-      </div>
-      <div className="mt-6 bg-gray-50 rounded-lg p-6 text-center">
-        <ButtonLink href="/contact" variant="primary">Book a Demo</ButtonLink>
       </div>
     </div>
   );
 }
 
-function EchoDetection() {
+function EchoTech() {
   return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Echo - WiFi Detection</H3>
-      <div className="bg-white border border-gray-200 rounded-lg p-8">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-16 h-16 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-            <Wifi className="h-8 w-8 text-indigo-700" />
-          </div>
-          <div>
-            <h4 className="text-2xl font-bold text-gray-900 mb-2">Echo</h4>
-            <p className="text-lg text-primary font-semibold mb-3">The Digital Whisper Layer</p>
-            <p className="text-gray-700">
-              Echo uses passive WiFi detection to identify presence based on the quiet digital signals devices emit as people move through your building.
-            </p>
-          </div>
+    <div className="bg-white p-8 rounded-xl border border-gray-200">
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Echo: Acoustic Monitoring & Sound Intelligence</H3>
+      <p className="text-gray-700 mb-6">
+        Echo uses acoustic sensors to detect and classify specific sounds within a building. From glass breaks to fire alarms, Echo provides an additional layer of situational awareness that visual or motion sensors might miss.
+      </p>
+      <div className="grid md:grid-cols-2 gap-8">
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Key Capabilities</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Specific sound classification (e.g., alarms, glass break, shouting)</li>
+            <li>• Directional sound source localization</li>
+            <li>• Ambient noise level monitoring for wellbeing</li>
+            <li>• Integration with mass notification systems</li>
+          </ul>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Key Capabilities</h5>
-            <ul className="space-y-2">
-              {["Passive WiFi device detection", "No app required", "Ambient presence awareness", "Closes occupancy gaps"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-900 mb-3">Use Cases</h5>
-            <ul className="space-y-2">
-              {["Visitor tracking", "Backup occupancy layer", "Evacuation verification", "Anonymous analytics"].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <h4 className="font-bold text-gray-900 mb-3">Use Cases</h4>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Secondary fire alarm verification</li>
+            <li>• Security event detection in low-visibility areas</li>
+            <li>• Workplace acoustic comfort monitoring</li>
+          </ul>
         </div>
-      </div>
-      <div className="mt-6 bg-gray-50 rounded-lg p-6 text-center">
-        <ButtonLink href="/contact" variant="primary">Book a Demo</ButtonLink>
       </div>
     </div>
   );
 }
 
-// Fire Safety Systems Tab Component
+// Fire Tab Component
 function FireTab({ subTab, setSubTab }: { subTab: FireSubTab; setSubTab: (tab: FireSubTab) => void }) {
   return (
     <div>
       <div className="mb-8">
         <H2 className="text-3xl font-bold text-gray-900 mb-4">Fire Safety Systems & Compliance</H2>
-        <p className="text-gray-700">
-          Comprehensive fire safety intelligence with real-time monitoring, compliance automation, and insurance integration.
+        <p className="text-gray-700 mb-6">
+          Unifi.id provides a comprehensive fire safety intelligence platform that connects your physical fire systems with real-time occupancy data. This ensures that in the event of an emergency, you have the live insights needed to protect lives and manage evacuations with confidence.
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-8">
-        {[
-          { id: "overview" as const, label: "Overview" },
-          { id: "fireguard" as const, label: "FireGuard Platform" },
-          { id: "compliance" as const, label: "Compliance" },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setSubTab(tab.id)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              subTab === tab.id
-                ? "bg-primary text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {subTab === "overview" && <FireOverview />}
-      {subTab === "fireguard" && <FireGuardDetail />}
-      {subTab === "compliance" && <FireCompliance />}
-    </div>
-  );
-}
-
-function FireOverview() {
-  return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-6">Complete Fire Safety Intelligence</H3>
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="text-xl font-bold text-gray-900 mb-3">FireGuard Platform</h4>
-          <p className="text-gray-700 mb-4">
-            Complete fire safety intelligence with real-time monitoring, compliance, and insurance integration.
-          </p>
-          <ul className="space-y-2 mb-4">
-            {["Real-time fire system monitoring", "Insurance risk reduction", "Compliance automation", "Independent deployment"].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary mt-1">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <ButtonLink href="/solutions/fireguard" variant="primary">
-            Discover FireGuard
-          </ButtonLink>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="text-xl font-bold text-gray-900 mb-3">Compliance & Reporting</h4>
-          <p className="text-gray-700 mb-4">
-            Automated compliance reporting and audit-ready documentation for fire safety regulations.
-          </p>
-          <ul className="space-y-2 mb-4">
-            {["Automated audit trails", "Regulatory compliance", "Incident documentation", "Insurance reporting"].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary mt-1">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <ButtonLink href="/contact" variant="outline">
-            Learn More
-          </ButtonLink>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FireGuardDetail() {
-  return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">FireGuard Platform</H3>
-      <p className="text-gray-700 mb-6">
-        Complete fire safety intelligence with real-time monitoring, compliance automation, and insurance integration.
-      </p>
-      <div className="bg-white border border-gray-200 rounded-lg p-8 mb-6">
-        <h4 className="text-xl font-bold text-gray-900 mb-4">Key Features</h4>
-        <div className="grid md:grid-cols-2 gap-6">
-          <ul className="space-y-3">
-            {["Real-time fire system monitoring", "Live evacuation tracking", "Automated muster management", "Fire panel integration"].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-gray-700">
-                <span className="text-primary mt-1">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <ul className="space-y-3">
-            {["Insurance risk reduction", "Compliance automation", "Incident playback", "Audit-ready reporting"].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-gray-700">
-                <span className="text-primary mt-1">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <ButtonLink href="/solutions/fireguard" variant="primary" size="lg">
-          Explore FireGuard Platform
-        </ButtonLink>
-      </div>
-    </div>
-  );
-}
-
-function FireCompliance() {
-  return (
-    <div>
-      <H3 className="text-2xl font-bold text-gray-900 mb-4">Fire Safety Compliance</H3>
-      <p className="text-gray-700 mb-6">
-        Automated compliance reporting and audit-ready documentation for fire safety regulations.
-      </p>
-      <div className="grid md:grid-cols-3 gap-6">
-        {[
-          { title: "Automated Audits", description: "Complete audit trails for all fire safety events and evacuations." },
-          { title: "Regulatory Compliance", description: "Meet all fire safety regulations with automated reporting." },
-          { title: "Insurance Ready", description: "Provide insurers with real-time risk data and incident reports." },
-        ].map((item) => (
-          <div key={item.title} className="bg-white border border-gray-200 rounded-lg p-6">
-            <h4 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h4>
-            <p className="text-gray-700">{item.description}</p>
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="border border-gray-200 rounded-xl p-8 bg-white hover:shadow-lg transition-shadow">
+          <div className="w-12 h-12 rounded-lg bg-red-100 text-red-700 flex items-center justify-center mb-6">
+            <Shield className="h-6 w-6" />
           </div>
-        ))}
+          <h4 className="text-2xl font-bold text-gray-900 mb-4">FireGuard™ Platform</h4>
+          <p className="text-gray-600 mb-6">
+            Our flagship fire safety solution. A complete intelligence platform for real-time fire system monitoring, evacuation management, and insurance risk reduction.
+          </p>
+          <ButtonLink href="/solutions/fireguard">Learn More About FireGuard</ButtonLink>
+        </div>
+
+        <div className="border border-gray-200 rounded-xl p-8 bg-white hover:shadow-lg transition-shadow">
+          <div className="w-12 h-12 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center mb-6">
+            <Network className="h-6 w-6" />
+          </div>
+          <h4 className="text-2xl font-bold text-gray-900 mb-4">InsureLink™</h4>
+          <p className="text-gray-600 mb-6">
+            Connect your fire safety performance directly with your insurers. Provide the evidence-based data needed to reduce premiums and improve risk profiles.
+          </p>
+          <ButtonLink href="/solutions/insurelink">Learn More About InsureLink</ButtonLink>
+        </div>
       </div>
-      <div className="mt-8 bg-gray-50 rounded-lg p-6 text-center">
-        <ButtonLink href="/contact" variant="primary">Book a Compliance Demo</ButtonLink>
+
+      <div className="bg-slate-900 text-white p-12 rounded-2xl text-center">
+        <H2 className="text-white mb-6">Ready to transform your building safety?</H2>
+        <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+          Book a demo with our fire safety specialists to see how our intelligence-led solutions can protect your people and your estate.
+        </p>
+        <ButtonLink href="/contact">Book a Demo</ButtonLink>
       </div>
     </div>
   );

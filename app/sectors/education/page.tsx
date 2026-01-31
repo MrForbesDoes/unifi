@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { GraduationCap, Users, AlertTriangle, Leaf, TrendingUp, Shield } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 export default function EducationSector() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Education Sector | Smart Campus Safety & Energy Efficiency"
+        description="Cortex™ helps universities and schools create safer, more sustainable learning environments through real-time occupancy intelligence and fire safety compliance."
+      />
       {/* Hero */}
       <Section className="bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -180,6 +183,6 @@ export default function EducationSector() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

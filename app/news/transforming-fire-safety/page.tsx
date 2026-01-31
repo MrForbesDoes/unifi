@@ -4,10 +4,15 @@ import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import PlaceholderImage from "@/src/components/PlaceholderImage";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function BlogPost() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Transforming Fire Safety with Real-Time Evacuation Intelligence | Unifi.id Insights"
+        description="Fire drills and evacuation protocols are often treated as tick-box exercises. Discover how live data and instant insight can transform fire safety."
+      />
       <Section className="bg-gray-50 pt-32">
         <div className="max-w-4xl mx-auto px-6">
           <ButtonLink href="/news" variant="outline" size="sm" className="mb-8">
@@ -87,6 +92,6 @@ export default function BlogPost() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

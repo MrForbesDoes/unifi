@@ -4,10 +4,15 @@ import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import PlaceholderImage from "@/src/components/PlaceholderImage";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function BlogPost() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="The Power of LiveView – Total Building Awareness in One Place | Unifi.id Insights"
+        description="Most buildings are a mess of disconnected systems. Unifi.id's unified command centre transforms fragmented data into actionable building intelligence."
+      />
       <Section className="bg-gray-50 pt-32">
         <div className="max-w-4xl mx-auto px-6">
           <ButtonLink href="/news" variant="outline" size="sm" className="mb-8">
@@ -87,6 +92,6 @@ export default function BlogPost() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

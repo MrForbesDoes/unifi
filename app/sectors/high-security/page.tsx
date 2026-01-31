@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import type { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { ShieldCheck, Lock, Shield, Database, Gauge } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 export default function HighSecuritySector() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="High-Security Sector | Military-Grade Building Intelligence"
+        description="Cortex™ delivers total control for high-security environments, including defence facilities and data centres. Ensure absolute safety, security, and continuity."
+      />
       {/* Hero */}
       <Section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -159,6 +162,6 @@ export default function HighSecuritySector() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

@@ -1,10 +1,9 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import { Metadata } from "next";
+import { H1, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { ArrowRight } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 const blogPosts = [
   {
@@ -77,7 +76,11 @@ const blogPosts = [
 
 export default function NewsHub() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="News & Blog | Smart Building Insights & Case Studies"
+        description="Stay updated with the latest insights, case studies, and updates on smart building intelligence, fire safety, and sustainability from Unifi.id."
+      />
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -117,6 +120,6 @@ export default function NewsHub() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

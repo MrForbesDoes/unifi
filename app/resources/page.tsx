@@ -6,6 +6,7 @@ import ImagePlaceholder from '@/src/components/ImagePlaceholder';
 import PageActions from '@/src/components/PageActions';
 import { Section } from '@/src/components/Section';
 import Text from '@/src/components/Text';
+import { SEO } from '@/src/components/SEO';
 
 const resourceCards = [
   {
@@ -31,7 +32,11 @@ const resourceCards = [
 
 export default function Resources() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Resources | Knowledge Hub for Building Intelligence"
+        description="A structured library for decision makers: explainers, pathways, and clear next steps. Explore our conservative, credible, and compliance-led resources."
+      />
       <Hero
         title={
           <Text as="h1" variant="h1" className="mb-6">
@@ -95,16 +100,16 @@ export default function Resources() {
               If you’re deciding where to start, use the sector and role pages to enter by context.
             </Text>
             <PageActions>
-              <ButtonLink href="/sectors" variant="secondary">
+              <ButtonLink href="/sectors/hub" variant="secondary">
                 Explore sectors
               </ButtonLink>
-              <ButtonLink href="/roles" variant="secondary">
+              <ButtonLink href="/roles/hub" variant="secondary">
                 Explore roles
               </ButtonLink>
             </PageActions>
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

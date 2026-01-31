@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { Leaf, BarChart, Shield, Globe } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleESGLead() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="ESG & Sustainability Lead | Data-Led Net Zero Intelligence"
+        description="Cortex™ provides the verifiable data needed for Net Zero pathways and carbon reporting. Deliver real sustainability impact with defensible building intelligence."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -147,6 +152,6 @@ export default function RoleESGLead() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

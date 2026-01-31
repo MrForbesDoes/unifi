@@ -9,6 +9,7 @@ import { Menu, X } from 'lucide-react';
 type NavLink = {
   href: string;
   label: string;
+  children?: NavLink[];
 };
 
 export default function Header() {
@@ -48,14 +49,53 @@ export default function Header() {
   const navLinks: NavLink[] = useMemo(() => [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
-    { href: '/platform/overview', label: 'Platform' },
-    { href: '/sectors/hub', label: 'Industries' },
-    { href: '/resources', label: 'Resources' },
+    {
+      href: '/platform/overview',
+      label: 'Cortex Platform',
+      children: [
+        { href: '/platform/overview', label: 'Platform Overview' },
+      ],
+    },
+    {
+      href: '/solutions/hub',
+      label: 'Solutions',
+      children: [
+        { href: '/solutions/hub', label: 'Solutions Hub' },
+        { href: '/solutions/fireguard', label: 'FireGuard Platform' },
+        { href: '/solutions/insurelink', label: 'InsureLink' },
+      ],
+    },
+    {
+      href: '/sectors/hub',
+      label: 'Sectors',
+      children: [
+        { href: '/sectors/hub', label: 'All Sectors' },
+      ],
+    },
+    {
+      href: '/roles/hub',
+      label: 'Roles',
+      children: [
+        { href: '/roles/hub', label: 'All Roles' },
+      ],
+    },
+    {
+      href: '/energy/hub',
+      label: 'Decarbonisation',
+      children: [
+        { href: '/energy/hub', label: 'Energy Hub' },
+        { href: '/energy/technology', label: 'Our Technology' },
+        { href: '/energy/funding-options', label: 'Funding Options' },
+        { href: '/energy/monitoring', label: 'Energy Monitoring' },
+        { href: '/energy/the-energy-trap', label: 'The Energy Trap' },
+        { href: '/energy/energy-club', label: 'Unifi.id Energy Club' },
+        { href: '/energy/contact', label: 'Energy Contact' },
+      ],
+    },
     { href: '/partners', label: 'Partners' },
-    { href: '/solutions/hub', label: 'Solutions' },
-    { href: '/roles/hub', label: 'Roles' },
-    { href: '/energy', label: 'Decarbonisation Hub' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/news', label: 'News & Blog' },
+    { href: '/resources', label: 'Resources' },
+    { href: '/contact', label: 'Contact Us' },
   ], []);
 
   // Header is black if it's not the home page OR if it's scrolled on the home page
@@ -88,7 +128,7 @@ export default function Header() {
           {/* Desktop Navigation - Visible on large screens and up */}
           <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6 flex-1 justify-end min-w-0">
             {navLinks.map((link) => (
-              <NavLinkItem key={link.href} link={link} />
+              <NavLinkItem key={link.href} link={link} isMobile={false} />
             ))}
             
             {/* Book a Demo Button */}
@@ -131,18 +171,7 @@ export default function Header() {
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
             <nav className="flex flex-col py-4">
               {navLinks.map((link) => (
-                <Link
-                  key={`mobile-${link.href}`}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block w-full py-3 px-4 text-base font-bold uppercase tracking-wider rounded transition-all duration-200 cursor-pointer ${
-                    isBlackHeader
-                      ? 'text-white hover:bg-white/20 active:bg-white/30'
-                      : 'text-white hover:bg-white/10 active:bg-white/20'
-                  }`}
-                >
-                  {link.label}
-                </Link>
+                <NavLinkItem key={`mobile-${link.href}`} link={link} isMobile={true} />
               ))}
               <Link
                 href="/contact"
@@ -159,27 +188,119 @@ export default function Header() {
   );
 }
 
-function NavLinkItem({ link }: { link: NavLink }) {
+function NavLinkItem({ link, isMobile }: { link: NavLink; isMobile?: boolean }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const hasChildren = link.children && link.children.length > 0;
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsHovered(true);
+      if (hasChildren) setIsDropdownOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsHovered(false);
+      if (hasChildren) setIsDropdownOpen(false);
+    }
+  };
+
+  const handleMobileClick = (e: React.MouseEvent) => {
+    if (isMobile && hasChildren) {
+      e.preventDefault();
+      setIsDropdownOpen((prev) => !prev);
+    }
+  };
+
+  if (isMobile) {
+    return (
+      <div className="w-full">
+        <Link
+          href={link.href}
+          onClick={handleMobileClick}
+          className="block w-full py-3 px-4 text-base font-bold uppercase tracking-wider rounded transition-all duration-200 cursor-pointer text-white hover:bg-white/20 active:bg-white/30"
+        >
+          {link.label}
+        </Link>
+        {hasChildren && isDropdownOpen && (
+          <div className="pl-6 py-2 bg-black/20">
+            {link.children?.map((childLink) => (
+              <Link
+                key={childLink.href}
+                href={childLink.href}
+                className="block w-full py-2 px-4 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-colors"
+              >
+                {childLink.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
-    <Link
-      href={link.href}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative py-2 text-[10px] xl:text-[11px] font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:text-white/80 whitespace-nowrap flex-shrink-0"
+    <div
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      ref={dropdownRef}
     >
-      {link.label}
-      
-      {/* Unifi.id Style Hover Line Animation */}
-      <m.div
-        initial={false}
-        animate={{ 
-          width: isHovered ? '100%' : '0%',
-        }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-0 left-0 h-[2px] bg-white"
-      />
-    </Link>
+      <Link
+        href={link.href}
+        className="relative py-2 text-[10px] xl:text-[11px] font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:text-white/80 whitespace-nowrap flex-shrink-0"
+      >
+        {link.label}
+        {hasChildren && (
+          <span className="ml-1 text-white/50">&#9660;</span> // Dropdown arrow
+        )}
+        {/* Unifi.id Style Hover Line Animation */}
+        <m.div
+          initial={false}
+          animate={{
+            width: isHovered ? '100%' : '0%',
+          }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute bottom-0 left-0 h-[2px] bg-white"
+        />
+      </Link>
+      {hasChildren && isDropdownOpen && (
+        <m.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="absolute top-full left-0 mt-2 w-48 bg-black border border-white/10 rounded-md shadow-lg overflow-hidden"
+        >
+          {link.children?.map((childLink) => (
+            <Link
+              key={childLink.href}
+              href={childLink.href}
+              className="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+              onClick={() => setIsDropdownOpen(false)}
+            >
+              {childLink.label}
+            </Link>
+          ))}
+        </m.div>
+      )}
+    </div>
   );
 }
+

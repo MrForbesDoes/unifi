@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { Wrench, Map, Clock, CheckCircle } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleFacilities() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Facilities Manager | Proactive Building & Estate Management"
+        description="Cortex™ helps facilities managers move from reactive maintenance to proactive estate management. Streamline day-to-day operations and improve occupant satisfaction."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -127,7 +132,7 @@ export default function RoleFacilities() {
                 ))}
               </ul>
               <div className="mt-10">
-                <ButtonLink href="/contact" className="w-full text-center">Request Facilities Demo</ButtonLink>
+                <ButtonLink href="/contact" className="w-full text-center">Book Facilities Demo</ButtonLink>
               </div>
             </div>
           </div>
@@ -147,6 +152,6 @@ export default function RoleFacilities() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

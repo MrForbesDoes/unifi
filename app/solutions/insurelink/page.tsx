@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { ShieldCheck, FileText, BarChart, Lock } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function InsureLink() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="InsureLink | Verifiable Building Risk & Assurance Evidence"
+        description="InsureLink bridges the gap between building performance and insurance risk. Provide verifiable evidence to reduce premiums and improve coverage."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -147,6 +152,6 @@ export default function InsureLink() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

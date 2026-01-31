@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { Briefcase, Shield, TrendingUp, BarChart3 } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleCEO() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="CEO & Managing Director | Strategic Building Intelligence"
+        description="Cortex™ translates complex building data into executive-level intelligence. Manage risk, ensure duty of care, and drive ESG leadership across your entire estate."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -147,6 +152,6 @@ export default function RoleCEO() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

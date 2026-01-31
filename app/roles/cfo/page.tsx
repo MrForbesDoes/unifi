@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { DollarSign, Calculator, PieChart, ShieldCheck } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleCFO() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="CFO & Finance Director | Financial Building Intelligence"
+        description="Cortex™ provides the financial literacy your estate data has been missing. Control costs, justify ROI, and optimize capital planning with verifiable data."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -147,6 +152,6 @@ export default function RoleCFO() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

@@ -5,10 +5,15 @@ import ImagePlaceholder from '@/src/components/ImagePlaceholder';
 import PageActions from '@/src/components/PageActions';
 import { Section } from '@/src/components/Section';
 import Text from '@/src/components/Text';
+import { SEO } from '@/src/components/SEO';
 
 export default function PlatformHub() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Platform | Cortex™ Building Intelligence Layer"
+        description="Cortex™ is the intelligence layer that unifies safety, occupancy, energy, and compliance. Discover how we connect building data into one system of record."
+      />
       <Hero
         title={
           <Text as="h1" variant="h1" className="mb-6">
@@ -52,6 +57,6 @@ export default function PlatformHub() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

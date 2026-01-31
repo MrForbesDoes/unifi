@@ -1,213 +1,231 @@
+
 'use client';
-
-
-import { Section } from '@/src/components/Section';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { GraduationCap, Target, Shield, Zap, Building, Heart, CheckCircle, Users, ArrowRight, Globe, Award, Lightbulb } from 'lucide-react';
 import { H1, H2, H3, Body, Lead } from '@/src/components/Typography';
+import { Section } from '@/src/components/Section';
 import { ButtonLink } from '@/src/components/ButtonLink';
-import { m } from 'framer-motion';
+import { SEO } from '@/src/components/SEO';
 import { fadeInUp, staggerContainer } from '@/src/components/motion';
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <main className="pt-20">
+      <SEO 
+        title="About Unifi.id | Our Mission, Approach & Commitment"
+        description="Learn about Unifi.id, a smart building intelligence company based in Canary Wharf. We help organisations optimise estates for safety, efficiency, and net zero."
+      />
+
       {/* Hero Section */}
-      <Section
-        
-        className="relative py-32 bg-gradient-to-br from-green-900/75 via-green-800/70 to-green-900/75"
-        style={{
-          backgroundImage: 'url(/unifi-assets/smart1.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay',
-        }}
+      <Section 
+        backgroundColor="blue"
+        className="relative overflow-hidden min-h-[60vh] flex items-center"
       >
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto px-6 text-center text-white"
-        >
-          <m.div variants={fadeInUp}>
-            <H1 className="mb-8 text-white">About Unifi.id</H1>
-          </m.div>
-          
-          <m.div variants={fadeInUp} initial="initial" animate="animate" className="space-y-6">
-            <Lead className="text-white/90">
-              Every building tells a story.
-            </Lead>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              How it's used. How it breathes. How it wastes or saves.
-            </p>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              At Unifi.id, we give buildings the ability to listen, learn, and act — turning static spaces into living, intelligent environments.
-            </p>
-            <p className="text-white font-bold text-lg leading-relaxed">
-              Based at Level39 in Canary Wharf — the world-renowned hub for IoT innovation
-            </p>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-br from-unifi-blue via-unifi-blue-dark to-unifi-green" />
+        </div>
+        
+        <div className="container relative z-10 px-6">
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="max-w-4xl"
+          >
+            <motion.div variants={fadeInUp}>
+              <H1 className="text-white mb-6">About Unifi.id</H1>
+            </motion.div>
+            <motion.div variants={fadeInUp}>
+              <Lead className="text-white/90 mb-8 text-2xl leading-relaxed">
+                Every building tells a story. How it's used. How it breathes. How it wastes or saves.
+                At Unifi.id, we give buildings the ability to listen, learn, and act — turning static spaces into living, intelligent environments.
+              </Lead>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 items-center">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 flex items-center gap-3">
+                <Globe className="w-5 h-5 text-unifi-green" />
+                <span className="text-white font-medium">Based at Level39, Canary Wharf</span>
+              </div>
+              <div className="text-white/70 italic">
+                The world-renowned hub for IoT innovation
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* Subtext Section */}
+      <Section backgroundColor="white">
+        <div className="container px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <Body className="text-xl text-unifi-gray-dark leading-relaxed">
               Unifi.id is a smart building intelligence company. We help organisations understand and optimise how people actually use their estates — delivering insights that cut costs, increase safety, strengthen compliance, and accelerate progress to net zero.
-            </p>
-          </m.div>
-        </m.div>
+            </Body>
+          </div>
+        </div>
       </Section>
 
       {/* Mission, Approach, Commitment */}
-      <Section>
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto px-6 grid md:grid-cols-3 gap-8"
-        >
-          <m.div variants={fadeInUp} initial="initial" animate="animate" className="p-8 border-l-4 border-unifi-blue bg-white rounded-lg shadow-sm">
-            <H3 className="mb-4 text-unifi-blue">Our Mission</H3>
-            <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-              To revolutionise building management by putting people at the heart of intelligent systems, creating environments that enhance wellbeing, safety, and sustainability whilst delivering measurable business outcomes.
-            </p>
-          </m.div>
-
-          <m.div variants={fadeInUp} initial="initial" animate="animate" className="p-8 border-l-4 border-unifi-blue bg-white rounded-lg shadow-sm">
-            <H3 className="mb-4 text-unifi-blue">Our Approach</H3>
-            <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-              We combine cutting-edge technology with deep understanding of human needs, ensuring our solutions enhance rather than complicate the building experience. Every feature is designed with your occupants in mind.
-            </p>
-          </m.div>
-
-          <m.div variants={fadeInUp} initial="initial" animate="animate" className="p-8 border-l-4 border-unifi-blue bg-white rounded-lg shadow-sm">
-            <H3 className="mb-4 text-unifi-blue">Our Commitment</H3>
-            <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-              We're committed to delivering outcomes that matter: improved operational efficiency, enhanced safety, reduced environmental impact, and better experiences for everyone who uses your buildings.
-            </p>
-          </m.div>
-        </m.div>
+      <Section backgroundColor="gray">
+        <div className="container px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Our Mission",
+                icon: Target,
+                content: "To revolutionise building management by putting people at the heart of intelligent systems, creating environments that enhance wellbeing, safety, and sustainability whilst delivering measurable business outcomes."
+              },
+              {
+                title: "Our Approach",
+                icon: Lightbulb,
+                content: "We combine cutting-edge technology with deep understanding of human needs, ensuring our solutions enhance rather than complicate the building experience. Every feature is designed with your occupants in mind."
+              },
+              {
+                title: "Our Commitment",
+                icon: Award,
+                content: "We're committed to delivering outcomes that matter: improved operational efficiency, enhanced safety, reduced environmental impact, and better experiences for everyone who uses your buildings."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-unifi-blue h-full flex flex-col"
+              >
+                <div className="bg-unifi-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                  <item.icon className="w-6 h-6 text-unifi-blue" />
+                </div>
+                <H3 className="mb-4">{item.title}</H3>
+                <Body className="text-unifi-gray-dark flex-grow">{item.content}</Body>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </Section>
 
-      <div className="border-t border-gray-200 my-16" />
-
       {/* Who We Are */}
-      <Section>
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto px-6"
-        >
-          <m.div variants={fadeInUp} initial="initial" animate="animate">
-            <H2 className="mb-6">Who We Are</H2>
-            <p className="text-lg text-unifi-gray leading-relaxed">
-              Unifi.id seamlessly identifies and tracks building occupants, zone by zone, using a range of detection solutions — from long-range RFID smart cards to facial recognition and device presence signals. Our primary technology, the proprietary Unifi.id RFID smart card, integrates with existing access systems while providing powerful real-time occupancy data.
-            </p>
-          </m.div>
-        </m.div>
+      <Section backgroundColor="white">
+        <div className="container px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <H2 className="mb-6">Who We Are</H2>
+              <Body className="text-lg mb-6">
+                Unifi.id seamlessly identifies and tracks building occupants, zone by zone, using a range of detection solutions — from long-range RFID smart cards to facial recognition and device presence signals.
+              </Body>
+              <Body className="text-lg">
+                Our primary technology, the proprietary Unifi.id RFID smart card, integrates with existing access systems while providing powerful real-time occupancy data.
+              </Body>
+            </div>
+            <div className="bg-unifi-gray rounded-3xl p-8 aspect-video flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-unifi-blue/20 to-unifi-green/20" />
+              <Users className="w-24 h-24 text-unifi-blue relative z-10" />
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* What We Do */}
       <Section backgroundColor="gray">
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto px-6"
-        >
-          <m.div variants={fadeInUp} initial="initial" animate="animate">
-            <H2 className="mb-6">What We Do</H2>
-            <p className="text-lg mb-8 text-unifi-gray leading-relaxed">
+        <div className="container px-6">
+          <div className="max-w-4xl mx-auto">
+            <H2 className="mb-8 text-center">What We Do</H2>
+            <Body className="text-xl mb-12 text-center">
               Unifi.id transforms buildings into intelligent, responsive environments. By turning fragmented occupancy signals into actionable insight, we enable estates to operate smarter, safer, and greener.
-            </p>
+            </Body>
             
-            <div className="space-y-4">
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-                <strong>Occupancy & Safety Intelligence</strong> – real-time awareness of who is inside, enabling smarter fire safety, safeguarding, and compliance.
-              </p>
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-                <strong>Operational Optimisation</strong> – integration with lighting, HVAC, security, and BMS systems so they respond dynamically to how spaces are actually used.
-              </p>
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-                <strong>Hospitality & Experience</strong> – discreet VIP recognition, licence compliance, and high-touch service intelligence for premium venues.
-              </p>
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">
-                <strong>Decarbonisation & Energy Efficiency</strong> – cashflow-positive LED, heating, and controls upgrades that pay for themselves through savings.
-              </p>
+            <div className="space-y-6">
+              {[
+                {
+                  title: "Occupancy & Safety Intelligence",
+                  desc: "Real-time awareness of who is inside, enabling smarter fire safety, safeguarding, and compliance."
+                },
+                {
+                  title: "Operational Optimisation",
+                  desc: "Integration with lighting, HVAC, security, and BMS systems so they respond dynamically to how spaces are actually used."
+                },
+                {
+                  title: "Hospitality & Experience",
+                  desc: "Discreet VIP recognition, licence compliance, and high-touch service intelligence for premium venues."
+                },
+                {
+                  title: "Decarbonisation & Energy Efficiency",
+                  desc: "Cashflow-positive LED, heating, and controls upgrades that pay for themselves through savings."
+                }
+              ].map((item, index) => (
+                <div key={index} className="flex gap-4 items-start bg-white p-6 rounded-xl shadow-sm">
+                  <CheckCircle className="w-6 h-6 text-unifi-green flex-shrink-0 mt-1" />
+                  <div>
+                    <span className="font-bold text-unifi-blue block mb-1">{item.title}</span>
+                    <Body>{item.desc}</Body>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <p className="italic mt-8 text-gray-600 text-base md:text-lg leading-relaxed">
-              At its core, Unifi.id doesn't replace existing systems — it makes them better, unlocking new value across energy, safety, compliance, and experience.
-            </p>
-          </m.div>
-        </m.div>
+            <div className="mt-12 p-6 border-l-4 border-unifi-blue bg-unifi-blue/5 italic">
+              <Body className="text-lg">
+                At its core, Unifi.id doesn't replace existing systems — it makes them better, unlocking new value across energy, safety, compliance, and experience.
+              </Body>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* Why Unifi.id */}
-      <Section>
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto px-6"
-        >
-          <m.div variants={fadeInUp} initial="initial" animate="animate">
-            <H2 className="mb-6">Why Unifi.id</H2>
-            <div className="space-y-4">
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">• Rapid ROI on energy efficiency and net-zero initiatives</p>
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">• Increased safety through real-time occupancy and fire intelligence</p>
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">• Seamless integration with existing building systems</p>
-              <p className="text-base md:text-lg text-unifi-gray leading-relaxed">• A scalable roadmap to support both immediate savings and long-term transformation</p>
+      <Section backgroundColor="white">
+        <div className="container px-6">
+          <div className="max-w-4xl mx-auto">
+            <H2 className="mb-12 text-center">Why Unifi.id</H2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[
+                "Rapid ROI on energy efficiency and net-zero initiatives",
+                "Increased safety through real-time occupancy and fire intelligence",
+                "Seamless integration with existing building systems",
+                "A scalable roadmap to support both immediate savings and long-term transformation"
+              ].map((item, index) => (
+                <div key={index} className="flex gap-4 items-center bg-unifi-gray p-6 rounded-xl">
+                  <Zap className="w-6 h-6 text-unifi-blue" />
+                  <span className="font-medium">{item}</span>
+                </div>
+              ))}
             </div>
-          </m.div>
-        </m.div>
+          </div>
+        </div>
       </Section>
-
-      <div className="border-t border-gray-200 my-16" />
 
       {/* Our Principle */}
-      <Section backgroundColor="gray">
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto px-6"
-        >
-          <m.div variants={fadeInUp} initial="initial" animate="animate">
-            <H2 className="mb-6">Our Principle</H2>
-            <p className="text-lg mb-4 text-unifi-gray leading-relaxed">
+      <Section backgroundColor="blue">
+        <div className="container px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <H2 className="text-white mb-8">Our Principle</H2>
+            <Body className="text-white/90 text-xl mb-8 leading-relaxed">
               We've never believed the answer is "there's an app for everything." Not everyone can — or will — engage with apps. Instead, Unifi.id creates invisible intelligence: systems that work for everyone, in the background, automatically.
-            </p>
-            <p className="text-lg text-unifi-gray leading-relaxed">
+            </Body>
+            <Body className="text-white/80 text-lg">
               With our technology and partners, we deliver the digital-first foundation for the smart buildings of tomorrow.
-            </p>
-          </m.div>
-        </m.div>
+            </Body>
+          </div>
+        </div>
       </Section>
 
-      <div className="border-t border-gray-200 my-16" />
-
-      {/* CTA */}
-      <Section>
-        <m.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center max-w-2xl mx-auto px-6"
-        >
-          <m.div variants={fadeInUp} initial="initial" animate="animate">
+      {/* CTA Section */}
+      <Section backgroundColor="white">
+        <div className="container px-6">
+          <div className="bg-unifi-gray rounded-3xl p-12 text-center max-w-4xl mx-auto">
             <H2 className="mb-6">Ready to discover how we can transform your building management?</H2>
-            <ButtonLink href="/contact">Get in Touch</ButtonLink>
-          </m.div>
-        </m.div>
+            <ButtonLink 
+              href="/contact" 
+              variant="primary"
+              size="lg"
+              className="inline-flex items-center gap-2"
+            >
+              Get in Touch <ArrowRight className="w-5 h-5" />
+            </ButtonLink>
+          </div>
+        </div>
       </Section>
     </main>
   );

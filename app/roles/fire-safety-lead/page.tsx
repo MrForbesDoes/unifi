@@ -4,10 +4,15 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { AlertTriangle, Shield, ClipboardCheck, Users } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function RoleFireSafetyLead() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Fire Safety Lead | Continuous Fire Safety Intelligence"
+        description="Cortex™ and FireGuard™ provide the continuous intelligence needed to safeguard lives and property. Automate compliance and gain real-time evacuation intelligence."
+      />
       {/* Hero Section */}
       <Section className="min-h-[60vh] flex items-center bg-unifi-dark text-white">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -147,6 +152,6 @@ export default function RoleFireSafetyLead() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

@@ -4,10 +4,15 @@ import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import PlaceholderImage from "@/src/components/PlaceholderImage";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function BlogPost() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Decarbonisation Deep Dive: The ROI of Green Tech | Unifi.id Insights"
+        description="We break down the long-term financial benefits of investing in decarbonisation technologies for your property portfolio."
+      />
       <Section className="bg-gray-50 pt-32">
         <div className="max-w-4xl mx-auto px-6">
           <ButtonLink href="/news" variant="outline" size="sm" className="mb-8">
@@ -87,6 +92,6 @@ export default function BlogPost() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

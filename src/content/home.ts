@@ -1,68 +1,34 @@
 export const homeContent = {
-  heroSlides: [
-    {
-      image: '/unifi-assets/smart1.jpg',
-      line: 'The greatest asset of any organisation is its people.',
-      cta: 'Explore Platform',
-      href: '/platform/overview'
-    },
-    {
-      image: '/unifi-assets/hosp1.jpg',
-      line: 'Every building exists to serve, protect, and optimise wellbeing.',
-      cta: 'Our Solutions',
-      href: '/solutions/hub'
-    },
-    {
-      image: '/unifi-assets/edu1.jpg',
-      line: 'Smarter Buildings. Safer People. Greener Futures.',
-      cta: 'View Sectors',
-      href: '/sectors'
-    },
-    {
-      image: '/unifi-assets/smart1.jpg',
-      line: 'Real-time intelligence that protects people and strengthens compliance.',
-      cta: 'Safety Solutions',
-      href: '/solutions/fireguard'
-    },
-    {
-      image: '/unifi-assets/hosp1.jpg',
-      line: 'Unifi.id helps you understand how people use your spaces.',
-      cta: 'Book a Demo',
-      href: '/contact'
-    }
-  ],
   hero: {
     headline: 'The greatest asset of any organisation is its people.',
     image: '/unifi-assets/smart1.jpg',
     supportingLines: [
       'Every building exists to serve, protect, and optimise their wellbeing.',
-      'Unifi.id helps you understand how people use your spaces - giving you the insight to protect lives, reduce risk, and improve operational performance.',
-      'Smarter Buildings. Safer People. Greener Futures.',
+      'Unifi.id helps you understand how people use your spaces — giving you the insight to protect lives, reduce risk, and improve operational performance.',
+      'Smarter Buildings.',
+      'Safer People.',
+      'Greener Futures.',
       'Real-time intelligence that protects people, strengthens compliance, and optimises your entire estate.',
     ],
   },
   challenge: {
-    title: 'THE CHALLENGE WE SOLVE',
+    title: 'The Challenge We Solve',
     intro: 'Modern estates are more complex than ever — but most are still managed with outdated tools and disconnected systems.',
     cards: [
       {
         title: 'Budgets',
-        image: '/unifi-assets/edu1.jpg',
         description: 'Budgets are drained because inefficiency is built into infrastructure that hasn\'t kept pace with demand.',
       },
       {
         title: 'Safety',
-        image: '/unifi-assets/hosp1.jpg',
         description: 'Safety is compromised because outdated fire drills, roll-calls, and door logs can\'t confirm who is inside, where they are, or whether systems are working as they should. Evacuation oversight, behavioural anomaly detection, and real-time fire system monitoring are often missing — leaving people and compliance exposed.',
       },
       {
         title: 'Energy',
-        image: '/unifi-assets/smart1.jpg',
         description: 'Energy is wasted because lighting and HVAC run when no one is there, inflating costs and carbon footprints. With carbon taxes and ESG frameworks tightening, estates are under growing pressure to decarbonise — yet few have the capital to act.',
       },
       {
         title: 'Compliance',
-        image: '/unifi-assets/Picture6.png',
         description: 'Compliance is fragile because reporting is manual, time-consuming, and often incomplete.',
       },
     ],
@@ -93,7 +59,7 @@ export const homeContent = {
     note: 'Cortex™ doesn\'t just collect data — it sets the stage for truly people-first building management.',
   },
   peopleFirst: {
-    title: 'PEOPLE-FIRST, INTELLIGENCE-LED PLATFORM MANAGEMENT',
+    title: 'PEOPLE-FIRST, INTELLIGENCE-LED BUILDING MANAGEMENT',
     quote: 'Cortex™ is designed around one principle: buildings should work for people, not the other way around.',
     body: 'By uniting data from occupancy, fire safety, energy, and operations, Cortex™ translates complexity into clarity — giving leaders the confidence to make faster, smarter decisions. The result:',
     results: [
@@ -121,7 +87,6 @@ export const homeContent = {
     cards: [
       {
         title: 'Smart Building Platform',
-        image: '/unifi-assets/smart1.jpg',
         description: 'Comprehensive occupancy intelligence, security, and analytics for complete building optimization.',
         bullets: [
           'Real-time occupancy tracking',
@@ -130,13 +95,12 @@ export const homeContent = {
           'Modular deployment options',
         ],
         cta: {
-          text: 'View All Solutions',
+          text: 'View All Solutions →',
           href: '/solutions/hub',
         },
       },
       {
         title: 'FireGuard Platform',
-        image: '/unifi-assets/hosp1.jpg',
         description: 'Complete fire safety intelligence with real-time monitoring, compliance, and insurance integration.',
         bullets: [
           'Real-time fire system monitoring',
@@ -145,13 +109,12 @@ export const homeContent = {
           'Independent or integrated deployment',
         ],
         cta: {
-          text: 'View All Solutions',
+          text: 'Discover FireGuard →',
           href: '/solutions/fireguard',
         },
       },
       {
         title: 'Energy Solutions',
-        image: '/unifi-assets/edu1.jpg',
         description: 'Fully funded LED, heating, and solar upgrades with guaranteed savings and zero upfront costs.',
         bullets: [
           'Zero upfront investment',
@@ -160,7 +123,7 @@ export const homeContent = {
           'Multiple funding options',
         ],
         cta: {
-          text: 'View All Solutions',
+          text: 'Explore Energy Solutions →',
           href: '/energy/hub',
         },
       },
@@ -170,7 +133,7 @@ export const homeContent = {
     title: 'Solutions Built For Your World',
     intro: 'Every estate has unique challenges. Whether you manage schools, public estates, or corporate portfolios, Unifi.id delivers people-first intelligence that adapts to your needs.',
     bySector: {
-      title: 'By Sector:',
+      title: 'By Sector',
       items: [
         'Education – from state schools to independent groups, creating brighter, safer learning environments with no capital drain.',
         'Public Sector – councils, NHS, emergency services, and government estates seeking efficiency, compliance, and decarbonisation.',
@@ -178,11 +141,11 @@ export const homeContent = {
       ],
       cta: {
         text: 'Explore Sectors',
-        href: '/sectors',
+        href: '/sectors/hub',
       },
     },
     byRole: {
-      title: 'By Role:',
+      title: 'By Role',
       items: [
         'Finance Leaders – protect budgets, unlock upgrades from savings, and reduce long-term risk exposure.',
         'Operational Leaders – gain total visibility across estates to improve resilience, streamline workflows, and optimise resources.',
@@ -191,13 +154,13 @@ export const homeContent = {
       ],
       cta: {
         text: 'Explore Roles',
-        href: '/roles',
+        href: '/roles/hub',
       },
     },
   },
   cta: {
     title: 'Ready to make your building smarter, safer, and greener?',
-    description: 'Unifi.id delivers people-first building intelligence that cuts costs, increases safety, strengthens compliance, and accelerates your journey to net zero. Let\'s build the next generation of smart estates, together.',
+    description: 'Unifi.id delivers people-first building intelligence that cuts costs, increases safety, strengthens compliance, and accelerates your journey to net zero.',
     buttons: [
       {
         text: 'Book a Demo',

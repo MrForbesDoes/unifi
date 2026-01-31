@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import type { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { Building, Users, Leaf, Shield, DollarSign } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 export default function CommercialSector() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Commercial Sector | Smart Buildings for Corporate Estates"
+        description="Cortex™ helps corporate offices balance employee wellbeing, operational efficiency, and ESG targets through real-time occupancy and building intelligence."
+      />
       {/* Hero */}
       <Section className="bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -159,6 +162,6 @@ export default function CommercialSector() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

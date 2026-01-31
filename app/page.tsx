@@ -6,10 +6,15 @@ import PeopleFirstSection from '@/src/components/PeopleFirstSection';
 import SolutionsSection from '@/src/components/SolutionsSection';
 import SectorsSection from '@/src/components/SectorsSection';
 import CTASection from '@/src/components/CTASection';
+import { SEO } from '@/src/components/SEO';
 
 export default function Home() {
   return (
     <>
+      <SEO 
+        title="Unifi.id | Smarter Buildings. Safer People. Greener Futures."
+        description="Unifi.id delivers real-time building intelligence that protects people, strengthens compliance, and optimises your entire estate for a greener future."
+      />
       <HeroSection />
       <ChallengeSection />
       <CortexSection />

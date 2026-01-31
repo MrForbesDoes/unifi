@@ -4,10 +4,15 @@ import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import PlaceholderImage from "@/src/components/PlaceholderImage";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function BlogPost() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Unifi.id & FireGuard: A New Era in Fire Safety | Unifi.id Insights"
+        description="Learn how our integrated FireGuard solution is revolutionizing fire safety compliance and response times in complex environments."
+      />
       <Section className="bg-gray-50 pt-32">
         <div className="max-w-4xl mx-auto px-6">
           <ButtonLink href="/news" variant="outline" size="sm" className="mb-8">
@@ -87,6 +92,6 @@ export default function BlogPost() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

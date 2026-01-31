@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import type { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
-import { Building2, Shield, Lock, FileCheck, TrendingDown, Users } from "lucide-react";
-
+import { Building2, Shield, Lock, FileCheck, TrendingDown } from "lucide-react";
+import { SEO } from '@/src/components/SEO';
 
 export default function GovernmentSector() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Government Sector | Public Safety & Compliance Intelligence"
+        description="Cortex™ provides public safety and compliance intelligence for government estates. Balance transparency with protection while managing budgets and infrastructure."
+      />
       {/* Hero */}
       <Section className="bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -159,6 +162,6 @@ export default function GovernmentSector() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

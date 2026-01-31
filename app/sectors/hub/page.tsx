@@ -1,10 +1,9 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { GraduationCap, Heart, Building2, ShoppingBag, Factory, Shield, Landmark } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 const sectors = [
   {
@@ -67,7 +66,11 @@ const sectors = [
 
 export default function SectorsHub() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Sectors | Intelligent Building Solutions by Industry"
+        description="Cortex™ delivers intelligent building solutions tailored to the unique challenges and compliance requirements of your sector. Explore our industry-specific solutions."
+      />
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -146,6 +149,6 @@ export default function SectorsHub() {
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

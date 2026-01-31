@@ -1,14 +1,17 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { CheckCircle2 } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 export default function ContactPage() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Contact Us | Book a Demo of Cortex™ Intelligence"
+        description="Get in touch with Unifi.id or book a personalised demonstration of Cortex™. Discover how we deliver smarter buildings, safer people, and greener futures."
+      />
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -45,7 +48,7 @@ export default function ContactPage() {
                 </li>
               ))}
             </ul>
-            <ButtonLink href="/book-demo" variant="primary" className="w-full">
+            <ButtonLink href="/contact" variant="primary" className="w-full">
               Book Demo
             </ButtonLink>
           </div>
@@ -112,6 +115,6 @@ export default function ContactPage() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

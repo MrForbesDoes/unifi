@@ -1,10 +1,9 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-import { Metadata } from "next";
+import { H1, H2, H3 } from "@/src/components/Typography";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { Briefcase, DollarSign, Settings, Leaf, Wrench, AlertTriangle, Shield } from "lucide-react";
-
+import { SEO } from '@/src/components/SEO';
 
 const roles = [
   {
@@ -74,7 +73,11 @@ const roles = [
 
 export default function RolesHub() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Roles | Tailored Intelligence for Every Stakeholder"
+        description="Cortex™ delivers the specific insights and tools each role needs to succeed — from boardroom strategy to day-to-day operations. Explore role-specific solutions."
+      />
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -173,6 +176,6 @@ export default function RolesHub() {
           </ButtonLink>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

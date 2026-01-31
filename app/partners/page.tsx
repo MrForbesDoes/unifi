@@ -6,6 +6,7 @@ import ImagePlaceholder from '@/src/components/ImagePlaceholder';
 import PageActions from '@/src/components/PageActions';
 import { Section } from '@/src/components/Section';
 import Text from '@/src/components/Text';
+import { SEO } from '@/src/components/SEO';
 
 const partnerTypes = [
   {
@@ -25,7 +26,11 @@ const partnerTypes = [
 
 export default function Partners() {
   return (
-    <>
+    <main className="min-h-screen">
+      <SEO 
+        title="Partners | Collaborative Building Intelligence"
+        description="Unifi.id works with partners who value credible delivery, clear accountability, and verifiable outcomes. Explore our partnership pathways."
+      />
       <Hero
         title={
           <Text as="h1" variant="h1" className="mb-6">
@@ -83,6 +88,6 @@ export default function Partners() {
           </PageActions>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

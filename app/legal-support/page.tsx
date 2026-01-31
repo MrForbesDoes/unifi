@@ -1,4 +1,6 @@
-"use client";
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
+
 
 import { useState } from "react";
 import { Section } from "@/src/components/Section";
@@ -107,8 +109,8 @@ export default function LegalSupportPage() {
     <>
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Legal & Support</h1>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Legal & Support</H1>
           <p className="text-lg md:text-xl text-gray-600">
             Transparency, compliance, and support you can rely on.
           </p>
@@ -117,7 +119,7 @@ export default function LegalSupportPage() {
 
       {/* Main Content */}
       <Section>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-6">
           <div className="space-y-4">
             {legalSections.map((section) => {
               const Icon = section.icon;
@@ -130,7 +132,7 @@ export default function LegalSupportPage() {
                     className="w-full p-6 text-left hover:bg-gray-50 transition-colors flex items-center gap-4"
                   >
                     <Icon className="h-6 w-6 text-primary flex-shrink-0" />
-                    <h2 className="text-xl font-bold text-gray-900 flex-1">{section.title}</h2>
+                    <H2 className="text-xl font-bold text-gray-900 flex-1">{section.title}</H2>
                     <div className="text-gray-400 text-2xl">
                       {isExpanded ? "−" : "+"}
                     </div>
@@ -142,9 +144,9 @@ export default function LegalSupportPage() {
                         {section.content.split('\n\n').map((paragraph, index) => {
                           if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                             return (
-                              <h3 key={index} className="text-lg font-semibold text-gray-900 mt-6 mb-3">
+                              <H3 key={index} className="text-lg font-semibold text-gray-900 mt-6 mb-3">
                                 {paragraph.replace(/\*\*/g, '')}
-                              </h3>
+                              </H3>
                             );
                           }
                           return (
@@ -165,8 +167,8 @@ export default function LegalSupportPage() {
 
       {/* Contact CTA */}
       <Section className="bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H2 className="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</H2>
           <p className="text-gray-600 mb-6">
             Our team is here to help. Get in touch for any legal, privacy, or support inquiries.
           </p>

@@ -1,3 +1,5 @@
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
 import Link from 'next/link';
 
 import { Section } from '@/src/components/Section';
@@ -14,9 +16,9 @@ export default function Sectors() {
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6">
-              <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
+              <H1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
                 Sectors
-              </h1>
+              </H1>
               <div className="space-y-4 mb-10 max-w-3xl">
                 <p className="text-lg md:text-xl text-gray-600">
                   Start with your sector, then follow the pathways across platform (Cortex), fire
@@ -50,9 +52,9 @@ export default function Sectors() {
       <Section>
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-10">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            <H2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
               Sector pathways
-            </h2>
+            </H2>
             <p className="text-base md:text-lg text-gray-700">
               Use these pathways to orient your priorities. Each sector then connects to the same
               core routes: Cortex, FireGuard, and Energy.
@@ -89,7 +91,7 @@ export default function Sectors() {
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-xl font-semibold text-gray-900">{sector.title}</h3>
+                        <H3 className="text-xl font-semibold text-gray-900">{sector.title}</H3>
                         {sector.comingSoon ? (
                           <span className="text-xs font-medium text-gray-700 bg-gray-100 border border-gray-200 rounded-full px-2 py-0.5">
                             Coming soon
@@ -152,9 +154,9 @@ export default function Sectors() {
       <Section>
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            <H2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
               Choose a starting point
-            </h2>
+            </H2>
             <p className="text-base md:text-lg text-gray-700 mb-10">
               If you want to understand the platform first, start with Cortex. If you're focused
               on immediate risk reduction, start with FireGuard.

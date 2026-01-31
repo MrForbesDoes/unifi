@@ -1,12 +1,10 @@
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
 import { Metadata } from "next";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "News & Blog | Unifi.id",
-  description: "Latest insights, case studies, and updates from Unifi.id on smart building intelligence, fire safety, and sustainability.",
-};
 
 const blogPosts = [
   {
@@ -82,8 +80,8 @@ export default function NewsHub() {
     <>
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">News & Blog</h1>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">News & Blog</H1>
           <p className="text-lg md:text-xl text-gray-600">
             Insights, case studies, and updates on smart building intelligence, fire safety, sustainability, and more.
           </p>
@@ -92,7 +90,7 @@ export default function NewsHub() {
 
       {/* Blog Grid */}
       <Section>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
@@ -107,7 +105,7 @@ export default function NewsHub() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{post.title}</h3>
+                  <H3 className="text-xl font-bold text-gray-900 mb-3">{post.title}</H3>
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>
                   <ButtonLink href={post.link} variant="outline" size="sm">
                     Read More

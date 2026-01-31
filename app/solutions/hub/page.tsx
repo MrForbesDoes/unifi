@@ -1,4 +1,6 @@
-"use client";
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
+
 
 import { useState } from "react";
 import { Metadata } from "next";
@@ -28,8 +30,8 @@ export default function SolutionsHub() {
     <>
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Solutions Hub</h1>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Solutions Hub</H1>
           <p className="text-lg md:text-xl text-gray-600">
             The Unifi.id Solutions Hub brings together a suite of modular technologies designed to make your building safer, smarter, and more efficient. Each solution delivers immediate value — and when combined, forms a powerful ecosystem managed through LiveView and powered by Cortex™, our central intelligence layer.
           </p>
@@ -38,7 +40,7 @@ export default function SolutionsHub() {
 
       {/* Main Tabs */}
       <Section>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap gap-4 mb-8 border-b border-gray-200">
             <button
               onClick={() => setMainTab("solutions")}
@@ -88,7 +90,7 @@ function SolutionsTab({ subTab, setSubTab }: { subTab: SolutionsSubTab; setSubTa
     <div>
       {/* Solutions Hero */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Intelligence That Works Across Your Estate</h2>
+        <H2 className="text-3xl font-bold text-gray-900 mb-4">Intelligence That Works Across Your Estate</H2>
         <p className="text-gray-700 mb-4">
           Every building is alive with movement, data, and systems — but without intelligence, they work in isolation. Unifi.id's Smart Building Solutions bring them together, transforming raw signals into actionable insights for safety, efficiency, and performance.
         </p>
@@ -202,7 +204,7 @@ function SolutionsOverview({ setSubTab }: { setSubTab: (tab: SolutionsSubTab) =>
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Intelligence Modules turn building data into action</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-6">Our Intelligence Modules turn building data into action</H3>
       <p className="text-gray-700 mb-8">
         From live occupancy tracking to predictive insights, each module focuses on a specific area of safety, security, and performance — giving you targeted solutions that work together as one intelligent platform.
       </p>
@@ -237,7 +239,7 @@ function SolutionsOverview({ setSubTab }: { setSubTab: (tab: SolutionsSubTab) =>
       </div>
 
       <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</h3>
+        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
         <p className="text-gray-700 mb-4">
           Discover how our intelligence modules can transform your building operations and provide the insights you need.
         </p>
@@ -253,7 +255,7 @@ function SolutionsOverview({ setSubTab }: { setSubTab: (tab: SolutionsSubTab) =>
 function AccessSecurity() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Access Control & Security</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Access Control & Security</H3>
       <p className="text-gray-700 mb-6">
         Protect your building with intelligent access control and real-time security monitoring. Detect tailgating, unauthorized access, and security threats before they become incidents.
       </p>
@@ -310,7 +312,7 @@ function AccessSecurity() {
       </div>
 
       <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</h3>
+        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
         <p className="text-gray-700 mb-4">
           Discover how our access control & security solutions can transform your building operations.
         </p>
@@ -326,7 +328,7 @@ function AccessSecurity() {
 function FireSafety() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Fire Safety & Evacuation</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Fire Safety & Evacuation</H3>
       <p className="text-gray-700 mb-6">
         Ensure fire safety compliance and real-time evacuation monitoring. Know who's evacuated, who's still inside, and coordinate emergency response with confidence.
       </p>
@@ -383,7 +385,7 @@ function FireSafety() {
       </div>
 
       <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</h3>
+        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
         <p className="text-gray-700 mb-4">
           Discover how our fire safety & evacuation solutions can transform your building operations.
         </p>
@@ -399,7 +401,7 @@ function FireSafety() {
 function LiveOccupancy() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Live Occupancy Intelligence</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Live Occupancy Intelligence</H3>
       <p className="text-gray-700 mb-6">
         Track people-flow in real time across floors and zones. Make smarter decisions about staffing, cleaning, heating/cooling, and safety drills with accurate occupancy data.
       </p>
@@ -456,7 +458,7 @@ function LiveOccupancy() {
       </div>
 
       <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</h3>
+        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
         <p className="text-gray-700 mb-4">
           Discover how our live occupancy intelligence solutions can transform your building operations.
         </p>
@@ -472,7 +474,7 @@ function LiveOccupancy() {
 function OperationalInsights() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Operational Insights</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Operational Insights</H3>
       <p className="text-gray-700 mb-6">
         Benchmark usage, spot trends, and feed predictive models. All insights available in clear, executive-ready dashboards or automated reports.
       </p>
@@ -518,7 +520,7 @@ function OperationalInsights() {
       </div>
 
       <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</h3>
+        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
         <p className="text-gray-700 mb-4">
           Discover how our operational insights solutions can transform your building operations.
         </p>
@@ -534,7 +536,7 @@ function OperationalInsights() {
 function EnergyPerformance() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Energy Performance</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Energy Performance</H3>
       <p className="text-gray-700 mb-6">
         Reduce waste by syncing lighting, HVAC and more to actual use. Our intelligence identifies inefficiencies and recommends corrective actions based on real occupancy patterns.
       </p>
@@ -579,7 +581,7 @@ function EnergyPerformance() {
       </div>
 
       <div className="bg-gray-50 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</h3>
+        <H3 className="text-xl font-bold text-gray-900 mb-3">Ready to Get Started?</H3>
         <p className="text-gray-700 mb-4">
           Discover how our energy performance solutions can transform your building operations.
         </p>
@@ -597,7 +599,7 @@ function DetectionTab({ subTab, setSubTab }: { subTab: DetectionSubTab; setSubTa
     <div>
       {/* Detection Hero */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Detection Technologies: Capturing the Signals That Matter</h2>
+        <H2 className="text-3xl font-bold text-gray-900 mb-4">Detection Technologies: Capturing the Signals That Matter</H2>
         <div className="space-y-4 text-gray-700">
           <p>
             Every building tells its story through countless small signals — a badge swipe, a face recognised, a movement in a corridor, a phone connecting to WiFi. But no single detection method sees everything.
@@ -701,7 +703,7 @@ function DetectionOverview({ setSubTab }: { setSubTab: (tab: DetectionSubTab) =>
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Layered Detection Architecture</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-6">Layered Detection Architecture</H3>
       <p className="text-gray-700 mb-8">
         No single detection method is perfect. Layer multiple technologies to close gaps, increase confidence, and ensure comprehensive coverage.
       </p>
@@ -742,7 +744,7 @@ function DetectionOverview({ setSubTab }: { setSubTab: (tab: DetectionSubTab) =>
 function SenseDetection() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Sense - RFID Detection</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Sense - RFID Detection</H3>
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
@@ -791,7 +793,7 @@ function SenseDetection() {
 function FlowDetection() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Flow - Vision-Based Analytics</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Flow - Vision-Based Analytics</H3>
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-16 h-16 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
@@ -840,7 +842,7 @@ function FlowDetection() {
 function CognitoDetection() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Cognito - Facial Recognition</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Cognito - Facial Recognition</H3>
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-16 h-16 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
@@ -889,7 +891,7 @@ function CognitoDetection() {
 function EchoDetection() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Echo - WiFi Detection</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Echo - WiFi Detection</H3>
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-16 h-16 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
@@ -940,7 +942,7 @@ function FireTab({ subTab, setSubTab }: { subTab: FireSubTab; setSubTab: (tab: F
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Fire Safety Systems & Compliance</h2>
+        <H2 className="text-3xl font-bold text-gray-900 mb-4">Fire Safety Systems & Compliance</H2>
         <p className="text-gray-700">
           Comprehensive fire safety intelligence with real-time monitoring, compliance automation, and insurance integration.
         </p>
@@ -976,7 +978,7 @@ function FireTab({ subTab, setSubTab }: { subTab: FireSubTab; setSubTab: (tab: F
 function FireOverview() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Complete Fire Safety Intelligence</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-6">Complete Fire Safety Intelligence</H3>
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white border border-gray-200 rounded-lg p-6">
           <h4 className="text-xl font-bold text-gray-900 mb-3">FireGuard Platform</h4>
@@ -1020,7 +1022,7 @@ function FireOverview() {
 function FireGuardDetail() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">FireGuard Platform</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">FireGuard Platform</H3>
       <p className="text-gray-700 mb-6">
         Complete fire safety intelligence with real-time monitoring, compliance automation, and insurance integration.
       </p>
@@ -1057,7 +1059,7 @@ function FireGuardDetail() {
 function FireCompliance() {
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Fire Safety Compliance</h3>
+      <H3 className="text-2xl font-bold text-gray-900 mb-4">Fire Safety Compliance</H3>
       <p className="text-gray-700 mb-6">
         Automated compliance reporting and audit-ready documentation for fire safety regulations.
       </p>

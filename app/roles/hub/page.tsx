@@ -1,12 +1,10 @@
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
 import { Metadata } from "next";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { Briefcase, DollarSign, Settings, Leaf, Wrench, AlertTriangle, Shield } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Roles | Unifi.id",
-  description: "Intelligent building solutions tailored for CEOs, CFOs, COOs, ESG Leads, Facilities Managers, Fire Safety Leads, and Security Heads.",
-};
 
 const roles = [
   {
@@ -79,8 +77,8 @@ export default function RolesHub() {
     <>
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Roles</h1>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Roles</H1>
           <p className="text-lg md:text-xl text-gray-600">
             Cortex™ delivers the specific insights and tools each role needs to succeed — from boardroom strategy to day-to-day operations.
           </p>
@@ -89,7 +87,7 @@ export default function RolesHub() {
 
       {/* Roles Grid */}
       <Section>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
             {roles.map((role) => {
               const Icon = role.icon;
@@ -98,7 +96,7 @@ export default function RolesHub() {
                   <div className="flex items-start gap-4 mb-4">
                     <Icon className={`h-10 w-10 ${role.iconColor} flex-shrink-0`} />
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{role.title}</h3>
+                      <H3 className="text-xl font-bold text-gray-900 mb-2">{role.title}</H3>
                       <p className="text-gray-600">{role.description}</p>
                     </div>
                   </div>
@@ -138,24 +136,24 @@ export default function RolesHub() {
 
       {/* Why Role-Specific */}
       <Section className="bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Why Role-Specific Solutions Matter</h2>
+        <div className="max-w-4xl mx-auto px-6">
+          <H2 className="text-3xl font-bold text-center text-gray-900 mb-8">Why Role-Specific Solutions Matter</H2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Relevant Insights</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">Relevant Insights</H3>
                 <p className="text-gray-600">See only the data and metrics that matter to your specific responsibilities.</p>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Actionable Intelligence</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">Actionable Intelligence</H3>
                 <p className="text-gray-600">Get recommendations you can act on immediately within your authority.</p>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Proven Outcomes</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">Proven Outcomes</H3>
                 <p className="text-gray-600">Case studies and results from others in your role.</p>
               </div>
             </div>
@@ -165,8 +163,8 @@ export default function RolesHub() {
 
       {/* CTA */}
       <Section>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">See How Cortex™ Works for Your Role</h2>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H2 className="text-2xl font-bold text-gray-900 mb-4">See How Cortex™ Works for Your Role</H2>
           <p className="text-gray-600 mb-6">
             Book a personalized demo tailored to your specific responsibilities and challenges.
           </p>

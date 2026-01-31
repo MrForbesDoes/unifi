@@ -1,3 +1,4 @@
+'use client';
 import { ButtonLink } from '@/src/components/ButtonLink';
 import Hero from '@/src/components/Hero';
 import ImagePlaceholder from '@/src/components/ImagePlaceholder';

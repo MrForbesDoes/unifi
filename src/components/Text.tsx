@@ -11,5 +11,7 @@ type TextProps = {
 };
 
 export default function Text({ as: As = 'p', variant, className = '', children }: TextProps) {
-  return <As className={`${typography[variant]} ${className}`.trim()}>{children}</As>;
+  const baseClasses = typography[variant].replace('text-unifi-dark', '').replace('text-unifi-gray', '');
+  const finalClassName = className.includes('text-') ? `${baseClasses} ${className}` : `${typography[variant]} ${className}`;
+  return <As className={finalClassName.trim()}>{children}</As>;
 }

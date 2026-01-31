@@ -10,21 +10,31 @@ export const typography = {
 
 // React component exports
 export function H1({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <h1 className={`${typography.h1} ${className}`}>{children}</h1>;
+  const baseClasses = typography.h1.replace('text-unifi-dark', '');
+  const finalClassName = className.includes('text-') ? `${baseClasses} ${className}` : `${typography.h1} ${className}`;
+  return <h1 className={finalClassName.trim()}>{children}</h1>;
 }
 
 export function H2({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <h2 className={`${typography.h2} ${className}`}>{children}</h2>;
+  const baseClasses = typography.h2.replace('text-unifi-dark', '');
+  const finalClassName = className.includes('text-') ? `${baseClasses} ${className}` : `${typography.h2} ${className}`;
+  return <h2 className={finalClassName.trim()}>{children}</h2>;
 }
 
 export function H3({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <h3 className={`${typography.h3} ${className}`}>{children}</h3>;
+  const baseClasses = typography.h3.replace('text-unifi-dark', '');
+  const finalClassName = className.includes('text-') ? `${baseClasses} ${className}` : `${typography.h3} ${className}`;
+  return <h3 className={finalClassName.trim()}>{children}</h3>;
 }
 
 export function Lead({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <p className={`${typography.lead} ${className}`}>{children}</p>;
+  const baseClasses = typography.lead.replace('text-unifi-gray', '');
+  const finalClassName = className.includes('text-') ? `${baseClasses} ${className}` : `${typography.lead} ${className}`;
+  return <p className={finalClassName.trim()}>{children}</p>;
 }
 
 export function Body({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <p className={`${typography.body} ${className}`}>{children}</p>;
+  const baseClasses = typography.body.replace('text-unifi-gray', '');
+  const finalClassName = className.includes('text-') ? `${baseClasses} ${className}` : `${typography.body} ${className}`;
+  return <p className={finalClassName.trim()}>{children}</p>;
 }

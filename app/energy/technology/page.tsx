@@ -1,3 +1,5 @@
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
 import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import { Section } from '@/src/components/Section';
@@ -26,9 +28,9 @@ export default function EnergyTechnology() {
     <>
       <Section className="min-h-[55vh] flex items-center">
         <div className="max-w-7xl mx-auto px-6 w-full">
-          <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
+          <H1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
             Our Technology
-          </h1>
+          </H1>
           <div className="space-y-4 mb-10 max-w-3xl">
             <p className="text-lg md:text-xl text-gray-600">
               Explore technology pathways for funded upgrades.
@@ -56,7 +58,7 @@ export default function EnergyTechnology() {
           <div className="grid md:grid-cols-3 gap-6">
             {tech.map((t) => (
               <Card key={t.title}>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.title}</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">{t.title}</H3>
                 <p className="text-base md:text-lg text-gray-700">{t.description}</p>
               </Card>
             ))}

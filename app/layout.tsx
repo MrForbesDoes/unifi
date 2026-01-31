@@ -1,3 +1,4 @@
+'use client';
 import type { Metadata } from 'next';
 import { Montserrat, Ubuntu } from 'next/font/google';
 import './globals.css';
@@ -18,10 +19,6 @@ const ubuntu = Ubuntu({
   variable: '--font-sans',
 });
 
-export const metadata: Metadata = {
-  title: 'Unifi',
-  description: 'Unifi website',
-};
 
 export default function RootLayout({
   children,

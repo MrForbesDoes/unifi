@@ -1,3 +1,4 @@
+'use client';
 import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import Hero from '@/src/components/Hero';

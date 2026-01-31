@@ -1,5 +1,6 @@
 'use client';
 
+
 import { Section } from '@/src/components/Section';
 import { H1, H2, H3, Body, Lead } from '@/src/components/Typography';
 import { ButtonLink } from '@/src/components/ButtonLink';
@@ -11,7 +12,7 @@ export default function AboutPage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <Section
-        variant="dark"
+        
         className="relative py-32 bg-gradient-to-br from-green-900/75 via-green-800/70 to-green-900/75"
         style={{
           backgroundImage: 'url(/unifi-assets/smart1.jpg)',
@@ -25,11 +26,11 @@ export default function AboutPage() {
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-4xl mx-auto text-center text-white"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-4xl mx-auto px-6 text-center text-white"
         >
-          <m.div variants={fadeInUp} initial="initial" animate="animate">
-            <H1 className="mb-8">About Unifi.id</H1>
+          <m.div variants={fadeInUp}>
+            <H1 className="mb-8 text-white">About Unifi.id</H1>
           </m.div>
           
           <m.div variants={fadeInUp} initial="initial" animate="animate" className="space-y-6">
@@ -59,8 +60,8 @@ export default function AboutPage() {
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid md:grid-cols-3 gap-8"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto px-6 grid md:grid-cols-3 gap-8"
         >
           <m.div variants={fadeInUp} initial="initial" animate="animate" className="p-8 border-l-4 border-unifi-blue bg-white rounded-lg shadow-sm">
             <H3 className="mb-4 text-unifi-blue">Our Mission</H3>
@@ -94,8 +95,8 @@ export default function AboutPage() {
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-4xl mx-auto"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-4xl mx-auto px-6"
         >
           <m.div variants={fadeInUp} initial="initial" animate="animate">
             <H2 className="mb-6">Who We Are</H2>
@@ -107,14 +108,14 @@ export default function AboutPage() {
       </Section>
 
       {/* What We Do */}
-      <Section variant="light">
+      <Section backgroundColor="gray">
         <m.div
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-4xl mx-auto"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-4xl mx-auto px-6"
         >
           <m.div variants={fadeInUp} initial="initial" animate="animate">
             <H2 className="mb-6">What We Do</H2>
@@ -151,8 +152,8 @@ export default function AboutPage() {
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-4xl mx-auto"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-4xl mx-auto px-6"
         >
           <m.div variants={fadeInUp} initial="initial" animate="animate">
             <H2 className="mb-6">Why Unifi.id</H2>
@@ -169,14 +170,14 @@ export default function AboutPage() {
       <div className="border-t border-gray-200 my-16" />
 
       {/* Our Principle */}
-      <Section variant="light">
+      <Section backgroundColor="gray">
         <m.div
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-4xl mx-auto"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-4xl mx-auto px-6"
         >
           <m.div variants={fadeInUp} initial="initial" animate="animate">
             <H2 className="mb-6">Our Principle</H2>
@@ -199,8 +200,8 @@ export default function AboutPage() {
           initial="initial"
           animate="animate"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
-          className="text-center max-w-2xl mx-auto"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-2xl mx-auto px-6"
         >
           <m.div variants={fadeInUp} initial="initial" animate="animate">
             <H2 className="mb-6">Ready to discover how we can transform your building management?</H2>

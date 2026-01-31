@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { Section } from '@/src/components/Section';
 import Text from '@/src/components/Text';
@@ -13,7 +14,7 @@ export default function PlatformOverviewPage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <Section>
-        <div className="max-w-4xl mx-auto text-center py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center py-16">
           <Text as="h1" variant="h1" className="mb-4">
             Introducing Cortex™
           </Text>

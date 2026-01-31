@@ -1,3 +1,4 @@
+'use client';
 import HeroSection from '@/src/components/HeroSection';
 import ChallengeSection from '@/src/components/ChallengeSection';
 import CortexSection from '@/src/components/CortexSection';

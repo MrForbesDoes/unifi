@@ -1,12 +1,10 @@
+'use client';
+import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
 import { Metadata } from "next";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { GraduationCap, Heart, Building2, ShoppingBag, Factory, Shield, Landmark } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Sectors | Unifi.id",
-  description: "Intelligent building solutions tailored for education, healthcare, government, commercial, retail, industrial, and high-security sectors.",
-};
 
 const sectors = [
   {
@@ -72,8 +70,8 @@ export default function SectorsHub() {
     <>
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Sectors</h1>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Sectors</H1>
           <p className="text-lg md:text-xl text-gray-600">
             Cortex™ delivers intelligent building solutions tailored to the unique challenges and compliance requirements of your sector.
           </p>
@@ -82,14 +80,14 @@ export default function SectorsHub() {
 
       {/* Sectors Grid */}
       <Section>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sectors.map((sector) => {
               const Icon = sector.icon;
               return (
                 <div key={sector.title} className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
                   <Icon className={`h-12 w-12 ${sector.iconColor} mb-4`} />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{sector.title}</h3>
+                  <H3 className="text-2xl font-bold text-gray-900 mb-3">{sector.title}</H3>
                   <p className="text-gray-600 mb-4">{sector.description}</p>
                   <ul className="space-y-2 mb-6">
                     {sector.benefits.map((benefit) => (
@@ -111,24 +109,24 @@ export default function SectorsHub() {
 
       {/* Why Sector-Specific */}
       <Section className="bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Why Sector-Specific Solutions Matter</h2>
+        <div className="max-w-4xl mx-auto px-6">
+          <H2 className="text-3xl font-bold text-center text-gray-900 mb-8">Why Sector-Specific Solutions Matter</H2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Compliance</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">Compliance</H3>
                 <p className="text-gray-600">Each sector has unique regulatory requirements that Cortex™ addresses directly.</p>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Operational Context</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">Operational Context</H3>
                 <p className="text-gray-600">Solutions designed around how your sector actually operates day-to-day.</p>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Proven Results</h3>
+                <H3 className="text-xl font-semibold text-gray-900 mb-2">Proven Results</H3>
                 <p className="text-gray-600">Case studies and outcomes specific to your industry.</p>
               </div>
             </div>
@@ -138,8 +136,8 @@ export default function SectorsHub() {
 
       {/* CTA */}
       <Section>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Not Sure Which Sector Fits Your Needs?</h2>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H2 className="text-2xl font-bold text-gray-900 mb-4">Not Sure Which Sector Fits Your Needs?</H2>
           <p className="text-gray-600 mb-6">
             Our team can help you identify the right solution for your specific building portfolio and requirements.
           </p>

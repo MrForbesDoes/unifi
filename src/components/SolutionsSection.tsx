@@ -16,7 +16,7 @@ export default function SolutionsSection() {
         </Text>
         <div className="grid md:grid-cols-3 gap-6">
           {homeContent.solutions.cards.map((card, index) => (
-            <Card key={index} imageSrc={card.image}>
+            <Card key={index}>
               <Text as="h3" variant="h3" className="mb-2">
                 {card.title}
               </Text>

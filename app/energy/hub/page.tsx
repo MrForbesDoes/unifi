@@ -126,7 +126,7 @@ export default function EnergyHubPage() {
                     <div className="max-w-4xl mx-auto text-center mb-16">
                       <H2 className="mb-4">LED Lighting Upgrades: Smarter Investment, Lifetime Returns</H2>
                       <Body className="text-lg text-unifi-gray-dark">
-                        In today\'s climate of rising energy bills, stretched budgets, and ESG targets, LED upgrades remain one of the most powerful, proven investments available.
+                        In today's climate of rising energy bills, stretched budgets, and ESG targets, LED upgrades remain one of the most powerful, proven investments available.
                       </Body>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -226,9 +226,9 @@ export default function EnergyHubPage() {
                         </div>
                         <div>
                           <H3 className="text-red-900 mb-4 text-xl">The Real Cost</H3>
-                          <Body className="text-red-800 mb-4">The result: the \'cheap\' option is rarely cheap at all.</Body>
+                          <Body className="text-red-800 mb-4">The result: the 'cheap' option is rarely cheap at all.</Body>
                           <ul className="space-y-2 text-red-800">
-                            <li>• Products that are technically \'legal\' but non-compliant</li>
+                            <li>• Products that are technically 'legal' but non-compliant</li>
                             <li>• Early failures requiring costly replacements</li>
                             <li>• Maintenance disruptions affecting operations</li>
                             <li>• Lost savings that never materialize</li>
@@ -295,33 +295,367 @@ export default function EnergyHubPage() {
             )}
 
             {activeTechTab === 'heating' && (
-              <Section backgroundColor="white">
-                <div className="container px-6 text-center py-20">
-                  <Thermometer className="w-16 h-16 text-unifi-blue mx-auto mb-6" />
-                  <H2>Heating & HVAC Solutions</H2>
-                  <Body className="max-w-2xl mx-auto mt-4">
-                    Optimise your building's climate control with intelligent heating and HVAC upgrades. Reduce waste and improve comfort with zero upfront capital.
-                  </Body>
-                  <div className="mt-12">
-                    <ButtonLink href="/contact" variant="primary">Discuss HVAC Upgrades</ButtonLink>
+              <div className="animate-in fade-in duration-500">
+                {/* Heating & HVAC Hero Stats */}
+                <Section backgroundColor="white">
+                  <div className="container px-6">
+                    <div className="max-w-4xl mx-auto text-center mb-16">
+                      <H2 className="mb-4">Heating & HVAC: Cut Waste, Improve Comfort, Zero Capex</H2>
+                      <Body className="text-lg text-unifi-gray-dark">
+                        Outdated heating and HVAC systems are among the largest sources of energy waste in commercial buildings. Modern, efficient systems reduce operating costs while improving occupant comfort and compliance.
+                      </Body>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8 mb-16">
+                      {[
+                        { val: '30-50%', label: 'Typical Heating Energy Reduction' },
+                        { val: '5-10 Years', label: 'Typical Payback Period' },
+                        { val: '15-20 Years', label: 'Modern System Lifespan' }
+                      ].map((stat, i) => (
+                        <div key={i} className="bg-unifi-blue/5 p-8 rounded-2xl text-center border border-unifi-blue/10">
+                          <div className="text-4xl font-bold text-unifi-blue mb-2">{stat.val}</div>
+                          <div className="text-unifi-gray-dark font-medium">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="max-w-3xl mx-auto space-y-6">
+                      <Body className="text-lg leading-relaxed">
+                        Intelligent heating and HVAC upgrades optimise your building's climate control — reducing energy waste, improving comfort, and supporting sustainability targets. Boiler replacements, heat pumps, and building management system upgrades can all be delivered without upfront capital.
+                      </Body>
+                      <Body className="text-lg leading-relaxed">
+                        Third-party funding structures allow energy and cost savings to finance the installation. Organisations redirect spend from wasted heating and cooling into fully funded upgrades, with positive cash flow from day one.
+                      </Body>
+                    </div>
                   </div>
-                </div>
-              </Section>
+                </Section>
+
+                {/* Heating & HVAC Benefits */}
+                <Section backgroundColor="gray">
+                  <div className="container px-6">
+                    <div className="grid md:grid-cols-2 gap-12">
+                      <div className="bg-white p-10 rounded-3xl shadow-sm border-t-4 border-unifi-green">
+                        <div className="flex items-center gap-4 mb-6">
+                          <DollarSign className="w-8 h-8 text-unifi-green" />
+                          <H3>Funding Without the Pain</H3>
+                        </div>
+                        <Body className="mb-6 font-medium">With heating and HVAC representing a major share of building energy use, savings from upgrades can often finance the entire project through third-party funding.</Body>
+                        <ul className="space-y-4">
+                          {
+                            [
+                              "Finance heating and HVAC upgrades without touching your capital budget",
+                              "Third-party funding covers equipment and installation costs",
+                              "Positive cash flow from month one",
+                              "Energy cost reductions exceed financing payments from day one"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-3 items-start">
+                                <CheckCircle className="w-5 h-5 text-unifi-green flex-shrink-0 mt-1" />
+                                <Body>{item}</Body>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                      <div className="bg-white p-10 rounded-3xl shadow-sm border-t-4 border-unifi-blue">
+                        <div className="flex items-center gap-4 mb-6">
+                          <TrendingUp className="w-8 h-8 text-unifi-blue" />
+                          <H3>Long-term Benefits</H3>
+                        </div>
+                        <ul className="space-y-4">
+                          {
+                            [
+                              "Money redirected into your own infrastructure instead of energy companies",
+                              "Improved occupant comfort and building performance",
+                              "Most upgrades pay for themselves over the system lifespan",
+                              "Savings continue long after the finance term ends"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-3 items-start">
+                                <CheckCircle className="w-5 h-5 text-unifi-blue flex-shrink-0 mt-1" />
+                                <Body>{item}</Body>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                {/* Heating & HVAC Warning Section */}
+                <Section backgroundColor="white">
+                  <div className="container px-6">
+                    <div className="max-w-4xl mx-auto bg-red-50 border border-red-100 rounded-3xl p-10">
+                      <div className="flex items-center gap-4 mb-6">
+                        <AlertTriangle className="w-10 h-10 text-red-600" />
+                        <H2 className="text-red-900">Beware of Unrealistic Promises</H2>
+                      </div>
+                      <Body className="text-red-800 mb-8 text-lg">
+                        The heating and HVAC market can be confusing. Some installers promote dramatic savings figures with low installation costs and budget equipment. While seductive, these offers often come at a hidden price:
+                      </Body>
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div>
+                          <H3 className="text-red-900 mb-4 text-xl">Hidden Risks</H3>
+                          <ul className="space-y-2 text-red-800">
+                            <li>• Equipment that fails before its rated life</li>
+                            <li>• Poor compliance with building regulations</li>
+                            <li>• Rising energy use as systems degrade</li>
+                            <li>• Replacements and disruptions that erase projected savings</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <H3 className="text-red-900 mb-4 text-xl">The Real Cost</H3>
+                          <Body className="text-red-800 mb-4">The result: the 'cheap' option is rarely cheap at all.</Body>
+                          <ul className="space-y-2 text-red-800">
+                            <li>• Products that are technically 'legal' but non-compliant</li>
+                            <li>• Early failures requiring costly replacements</li>
+                            <li>• Maintenance disruptions affecting operations</li>
+                            <li>• Lost savings that never materialize</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                {/* The Unifi.id Standard - Heating */}
+                <Section backgroundColor="gray">
+                  <div className="container px-6">
+                    <div className="max-w-4xl mx-auto text-center mb-12">
+                      <H2 className="mb-4">The Unifi.id Standard</H2>
+                      <Body className="text-lg">At Unifi.id, we deliver heating and HVAC solutions that protect your budget not just this year, but every year:</Body>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="bg-white p-8 rounded-2xl shadow-sm">
+                        <div className="flex items-center gap-3 mb-6">
+                          <CheckCircle className="w-6 h-6 text-unifi-green" />
+                          <H3 className="text-xl">Quality & Compliance</H3>
+                        </div>
+                        <ul className="space-y-3">
+                          {
+                            [
+                              "Meeting or exceeding building regulations and standards",
+                              "Premium equipment with certified performance ratings",
+                              "Systems designed for longevity and reliability",
+                              "Equipment that maintains efficiency for its full rated life",
+                              "Designed for longevity, protecting your long-term investment"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-2 text-unifi-gray-dark">
+                                <span className="text-unifi-green">•</span> {item}
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                      <div className="bg-white p-8 rounded-2xl shadow-sm">
+                        <div className="flex items-center gap-3 mb-6">
+                          <Target className="w-6 h-6 text-unifi-blue" />
+                          <H3 className="text-xl">Conservative & Reliable</H3>
+                        </div>
+                        <ul className="space-y-3">
+                          {
+                            [
+                              "Realistic estimates based on real site conditions and dialogue",
+                              "Conservative modelling, not unrealistic promises that disappoint",
+                              "Experienced teams who handle the process end to end",
+                              "Stress-free installation minimising disruption to your operations"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-2 text-unifi-gray-dark">
+                                <span className="text-unifi-blue">•</span> {item}
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                <Section backgroundColor="white">
+                  <div className="container px-6 text-center py-12">
+                    <ButtonLink href="/energy/contact" variant="primary">Discuss Heating & HVAC Upgrades</ButtonLink>
+                  </div>
+                </Section>
+              </div>
             )}
 
             {activeTechTab === 'solar' && (
-              <Section backgroundColor="white">
-                <div className="container px-6 text-center py-20">
-                  <Sun className="w-16 h-16 text-unifi-green mx-auto mb-6" />
-                  <H2>Solar & Renewables</H2>
-                  <Body className="max-w-2xl mx-auto mt-4">
-                    Generate your own clean energy and reduce reliance on the grid. Our fully funded solar solutions provide immediate savings and long-term energy security.
-                  </Body>
-                  <div className="mt-12">
-                    <ButtonLink href="/contact" variant="primary">Explore Solar Options</ButtonLink>
+              <div className="animate-in fade-in duration-500">
+                {/* Solar & Renewables Hero Stats */}
+                <Section backgroundColor="white">
+                  <div className="container px-6">
+                    <div className="max-w-4xl mx-auto text-center mb-16">
+                      <H2 className="mb-4">Solar & Renewables: Generate Clean Energy, Reduce Reliance on the Grid</H2>
+                      <Body className="text-lg text-unifi-gray-dark">
+                        Solar PV and renewable energy systems allow organisations to generate their own clean power, cut energy costs, and build long-term energy security. Fully funded solutions remove the capital barrier to adoption.
+                      </Body>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8 mb-16">
+                      {[
+                        { val: '20-40%', label: 'Typical Electricity Cost Reduction' },
+                        { val: '5-10 Years', label: 'Typical Payback Period' },
+                        { val: '25+ Years', label: 'Solar Panel Lifespan' }
+                      ].map((stat, i) => (
+                        <div key={i} className="bg-unifi-blue/5 p-8 rounded-2xl text-center border border-unifi-blue/10">
+                          <div className="text-4xl font-bold text-unifi-blue mb-2">{stat.val}</div>
+                          <div className="text-unifi-gray-dark font-medium">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="max-w-3xl mx-auto space-y-6">
+                      <Body className="text-lg leading-relaxed">
+                        Solar PV and renewable energy systems reduce reliance on the grid, lower electricity costs, and support decarbonisation targets. With third-party funding, organisations can install solar and other renewables with no upfront capital.
+                      </Body>
+                      <Body className="text-lg leading-relaxed">
+                        Energy savings and export revenue can fully finance the installation. The savings stay with you, not your supplier — delivering immediate cost reduction and long-term energy security.
+                      </Body>
+                    </div>
                   </div>
-                </div>
-              </Section>
+                </Section>
+
+                {/* Solar & Renewables Benefits */}
+                <Section backgroundColor="gray">
+                  <div className="container px-6">
+                    <div className="grid md:grid-cols-2 gap-12">
+                      <div className="bg-white p-10 rounded-3xl shadow-sm border-t-4 border-unifi-green">
+                        <div className="flex items-center gap-4 mb-6">
+                          <DollarSign className="w-8 h-8 text-unifi-green" />
+                          <H3>Funding Without the Pain</H3>
+                        </div>
+                        <Body className="mb-6 font-medium">With electricity cost savings and export revenue, solar and renewable projects can often be fully financed through third-party funding.</Body>
+                        <ul className="space-y-4">
+                          {
+                            [
+                              "Finance solar and renewable installations without touching your capital budget",
+                              "Third-party funding covers equipment and installation costs",
+                              "Positive cash flow from month one",
+                              "Energy cost reductions exceed financing payments from day one"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-3 items-start">
+                                <CheckCircle className="w-5 h-5 text-unifi-green flex-shrink-0 mt-1" />
+                                <Body>{item}</Body>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                      <div className="bg-white p-10 rounded-3xl shadow-sm border-t-4 border-unifi-blue">
+                        <div className="flex items-center gap-4 mb-6">
+                          <TrendingUp className="w-8 h-8 text-unifi-blue" />
+                          <H3>Long-term Benefits</H3>
+                        </div>
+                        <ul className="space-y-4">
+                          {
+                            [
+                              "Money redirected into your own energy generation instead of the grid",
+                              "Reduced exposure to volatile energy prices",
+                              "Most systems pay for themselves over their operational life",
+                              "Savings and generation continue long after the finance term ends"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-3 items-start">
+                                <CheckCircle className="w-5 h-5 text-unifi-blue flex-shrink-0 mt-1" />
+                                <Body>{item}</Body>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                {/* Solar & Renewables Warning Section */}
+                <Section backgroundColor="white">
+                  <div className="container px-6">
+                    <div className="max-w-4xl mx-auto bg-red-50 border border-red-100 rounded-3xl p-10">
+                      <div className="flex items-center gap-4 mb-6">
+                        <AlertTriangle className="w-10 h-10 text-red-600" />
+                        <H2 className="text-red-900">Beware of Unrealistic Promises</H2>
+                      </div>
+                      <Body className="text-red-800 mb-8 text-lg">
+                        The solar and renewables market can be confusing. Some installers promote dramatic savings figures with low installation costs and budget panels. While seductive, these offers often come at a hidden price:
+                      </Body>
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div>
+                          <H3 className="text-red-900 mb-4 text-xl">Hidden Risks</H3>
+                          <ul className="space-y-2 text-red-800">
+                            <li>• Panels that underperform or fail before their rated life</li>
+                            <li>• Poor compliance with grid connection and safety standards</li>
+                            <li>• Declining output as systems degrade faster than expected</li>
+                            <li>• Replacements and downtime that erase projected savings</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <H3 className="text-red-900 mb-4 text-xl">The Real Cost</H3>
+                          <Body className="text-red-800 mb-4">The result: the 'cheap' option is rarely cheap at all.</Body>
+                          <ul className="space-y-2 text-red-800">
+                            <li>• Products that are technically 'legal' but non-compliant</li>
+                            <li>• Early failures requiring costly replacements</li>
+                            <li>• Maintenance disruptions affecting operations</li>
+                            <li>• Lost savings that never materialize</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                {/* The Unifi.id Standard - Solar */}
+                <Section backgroundColor="gray">
+                  <div className="container px-6">
+                    <div className="max-w-4xl mx-auto text-center mb-12">
+                      <H2 className="mb-4">The Unifi.id Standard</H2>
+                      <Body className="text-lg">At Unifi.id, we deliver solar and renewable solutions that protect your budget not just this year, but every year:</Body>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="bg-white p-8 rounded-2xl shadow-sm">
+                        <div className="flex items-center gap-3 mb-6">
+                          <CheckCircle className="w-6 h-6 text-unifi-green" />
+                          <H3 className="text-xl">Quality & Compliance</H3>
+                        </div>
+                        <ul className="space-y-3">
+                          {
+                            [
+                              "Meeting or exceeding grid connection and safety standards",
+                              "Premium panels with certified performance ratings",
+                              "Systems designed for longevity and reliability",
+                              "Equipment that maintains output for its full rated life",
+                              "Designed for longevity, protecting your long-term investment"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-2 text-unifi-gray-dark">
+                                <span className="text-unifi-green">•</span> {item}
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                      <div className="bg-white p-8 rounded-2xl shadow-sm">
+                        <div className="flex items-center gap-3 mb-6">
+                          <Target className="w-6 h-6 text-unifi-blue" />
+                          <H3 className="text-xl">Conservative & Reliable</H3>
+                        </div>
+                        <ul className="space-y-3">
+                          {
+                            [
+                              "Realistic estimates based on real site conditions and dialogue",
+                              "Conservative modelling, not unrealistic promises that disappoint",
+                              "Experienced teams who handle the process end to end",
+                              "Stress-free installation minimising disruption to your operations"
+                            ].map((item, i) => (
+                              <li key={i} className="flex gap-2 text-unifi-gray-dark">
+                                <span className="text-unifi-blue">•</span> {item}
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                <Section backgroundColor="white">
+                  <div className="container px-6 text-center py-12">
+                    <ButtonLink href="/energy/contact" variant="primary">Explore Solar & Renewables</ButtonLink>
+                  </div>
+                </Section>
+              </div>
             )}
           </motion.div>
         ) : (
@@ -496,7 +830,6 @@ export default function EnergyHubPage() {
                             </div>
                           ))}
                         </div>
-                      </div>
                     )}
 
                     {activeEduTab === 'primary-secondary' && (

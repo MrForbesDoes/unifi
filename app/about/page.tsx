@@ -219,7 +219,6 @@ export default function AboutPage() {
             <ButtonLink 
               href="/contact" 
               variant="primary"
-              size="lg"
               className="inline-flex items-center gap-2"
             >
               Get in Touch <ArrowRight className="w-5 h-5" />

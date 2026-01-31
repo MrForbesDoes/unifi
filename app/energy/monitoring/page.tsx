@@ -1,37 +1,44 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
+import { H1, H2, Body } from "@/src/components/Typography";
 import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
-import PlaceholderImage from '@/src/components/PlaceholderImage';
+import { SEO } from '@/src/components/SEO';
+import { BarChart3 } from 'lucide-react';
 
 export default function EnergyMonitoring() {
   return (
     <>
-      <Section className="min-h-[55vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
+      <SEO
+        title="Energy Monitoring"
+        description="Understand your energy consumption to identify savings opportunities and track the performance of your upgrades."
+      />
+      <Section className="min-h-[40vh] flex items-center">
+        <div className="max-w-7xl mx-auto px-6 w-full text-center">
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 rounded-xl bg-unifi-blue/10 flex items-center justify-center">
+              <BarChart3 className="w-8 h-8 text-unifi-blue" />
+            </div>
+          </div>
           <H1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
             Energy Monitoring
           </H1>
-          <div className="space-y-4 mb-10 max-w-3xl">
-            <p className="text-lg md:text-xl text-gray-600">
-              A structured approach to monitoring that supports decision making and reporting.
-            </p>
-            <p className="text-lg md:text-xl text-gray-600">
-              This page is intentionally minimal until approved detail is provided.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <ButtonLink href="/energy/hub">Back to hub</ButtonLink>
-            <ButtonLink href="/energy/contact" variant="secondary">
-              Energy contact
-            </ButtonLink>
-          </div>
-        
+          <Body className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Understand your energy consumption to identify savings opportunities and track the performance of your upgrades.
+          </Body>
+        </div>
+      </Section>
 
-          <div className="mt-10">
-            <PlaceholderImage className="aspect-[4/3] lg:aspect-[3/2] shadow-sm" />
+      <Section backgroundColor="gray">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <H2 className="text-2xl font-bold text-gray-900 mb-4">Content Coming Soon</H2>
+          <Body className="mb-8 text-gray-600">
+            We are currently developing this section to provide detailed information about our energy monitoring solutions. Check back soon for updates.
+          </Body>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ButtonLink href="/energy/contact">Contact Energy Team</ButtonLink>
+            <ButtonLink href="/energy/hub" variant="secondary">Back to Energy Hub</ButtonLink>
           </div>
-</div>
+        </div>
       </Section>
     </>
   );

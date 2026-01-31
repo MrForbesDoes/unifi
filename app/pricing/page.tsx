@@ -1,82 +1,110 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
+import { H1, H2, H3, Body } from "@/src/components/Typography";
 import { Section } from '@/src/components/Section';
-import PlaceholderImage from '@/src/components/PlaceholderImage';
+import { ButtonLink } from '@/src/components/ButtonLink';
+import { SEO } from '@/src/components/SEO';
+import { Building2, Network, Target } from 'lucide-react';
 
 export default function Pricing() {
   return (
     <>
+      <SEO
+        title="Pricing | Flexible Licensing for Building Intelligence"
+        description="Choose the licensing model that best fits your organisation — from single buildings to enterprise-wide deployments. Per-building, enterprise, or outcome-based pricing."
+      />
       {/* Hero Section */}
-      <Section className="min-h-[70vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
+      <Section className="min-h-[40vh] flex items-center">
+        <div className="max-w-4xl mx-auto px-6 w-full text-center">
           <H1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
-            Pricing
+            Flexible Licensing for Every Need
           </H1>
-          <div className="space-y-4 mb-8">
-            <p className="text-lg md:text-xl text-gray-600">
-              Flexible pricing plans to suit your needs
-            </p>
-            <p className="text-lg md:text-xl text-gray-600">
-              Choose the plan that works best for your organization
-            </p>
-          </div>
-        
-
-          <div className="mt-10">
-            <PlaceholderImage className="aspect-[4/3] lg:aspect-[3/2] shadow-sm" />
-          </div>
-</div>
+          <Body className="text-lg md:text-xl text-gray-600">
+            Choose the licensing model that best fits your organisation, from single buildings to enterprise-wide deployments.
+          </Body>
+        </div>
       </Section>
 
-      {/* Pricing Plans Section */}
+      {/* Pricing Cards */}
       <Section>
         <div className="max-w-7xl mx-auto px-6">
-          <H2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-            Pricing Plans
-          </H2>
-          <p className="text-base md:text-lg text-gray-700 mb-8">
-            Select the plan that aligns with your business requirements and scale as you grow.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <H3 className="text-xl font-semibold text-gray-900 mb-2">
-                Starter
-              </H3>
-              <p className="text-base md:text-lg text-gray-700">
-                Perfect for small teams getting started
-              </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Per-Building */}
+            <div className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:border-blue-500 transition-colors">
+              <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                <Building2 className="h-8 w-8 text-blue-600" />
+              </div>
+              <H3 className="text-xl font-semibold text-gray-900 mb-2">Per-Building</H3>
+              <Body className="text-gray-700 mb-6">
+                Perfect for single sites or gradual rollouts
+              </Body>
+              <ul className="space-y-3 mb-8 text-gray-700">
+                <li>• Monthly or annual per-building pricing</li>
+                <li>• No minimum commitment required</li>
+                <li>• Scale up or down as needed</li>
+                <li>• Full feature access included</li>
+              </ul>
+              <div className="text-blue-600 font-semibold mb-6">Starting from £500/month</div>
+              <ButtonLink href="/contact" variant="outline" className="w-full">
+                Discuss Options
+              </ButtonLink>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <H3 className="text-xl font-semibold text-gray-900 mb-2">
-                Professional
-              </H3>
-              <p className="text-base md:text-lg text-gray-700">
-                Ideal for growing businesses with advanced needs
-              </p>
+
+            {/* Enterprise */}
+            <div className="bg-white border-2 border-primary rounded-lg p-8 relative hover:shadow-lg transition-shadow">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full">
+                Most Popular
+              </span>
+              <div className="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6 mt-2">
+                <Network className="h-8 w-8 text-green-600" />
+              </div>
+              <H3 className="text-xl font-semibold text-gray-900 mb-2">Enterprise</H3>
+              <Body className="text-gray-700 mb-6">
+                Comprehensive agreements for large portfolios
+              </Body>
+              <ul className="space-y-3 mb-8 text-gray-700">
+                <li>• Volume discounts for multiple buildings</li>
+                <li>• Dedicated account management</li>
+                <li>• Priority support and SLA guarantees</li>
+                <li>• Custom integrations included</li>
+              </ul>
+              <div className="text-green-600 font-semibold mb-6">Contact for pricing</div>
+              <ButtonLink href="/contact" variant="primary" className="w-full">
+                Discuss Licensing
+              </ButtonLink>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <H3 className="text-xl font-semibold text-gray-900 mb-2">
-                Enterprise
-              </H3>
-              <p className="text-base md:text-lg text-gray-700">
-                Comprehensive solution for large organizations
-              </p>
+
+            {/* Outcome-Based */}
+            <div className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:border-purple-500 transition-colors">
+              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <Target className="h-8 w-8 text-purple-600" />
+              </div>
+              <H3 className="text-xl font-semibold text-gray-900 mb-2">Outcome-Based</H3>
+              <Body className="text-gray-700 mb-6">
+                Pay based on achieved savings and benefits
+              </Body>
+              <ul className="space-y-3 mb-8 text-gray-700">
+                <li>• Share of energy savings achieved</li>
+                <li>• Performance guarantees included</li>
+                <li>• Aligned incentives for optimisation</li>
+                <li>• Risk mitigation for customers</li>
+              </ul>
+              <div className="text-purple-600 font-semibold mb-6">15–25% of savings</div>
+              <ButtonLink href="/contact" variant="outline" className="w-full">
+                Discuss Options
+              </ButtonLink>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* Pricing Details Section */}
-      <Section>
-        <div className="max-w-7xl mx-auto px-6">
-          <H2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-            Custom Pricing
-          </H2>
-          <p className="text-base md:text-lg text-gray-700">
-            For organizations with unique requirements, we offer custom pricing solutions. 
-            Contact our sales team to discuss your specific needs and receive a tailored 
-            quote that fits your budget and objectives.
-          </p>
+      {/* CTA */}
+      <Section className="bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <H2 className="text-2xl font-semibold text-gray-900 mb-4">Need a tailored quote?</H2>
+          <Body className="text-gray-700 mb-6">
+            Our team will work with you to design a licensing model that aligns with your portfolio size, goals, and budget.
+          </Body>
+          <ButtonLink href="/contact">Contact Sales</ButtonLink>
         </div>
       </Section>
     </>

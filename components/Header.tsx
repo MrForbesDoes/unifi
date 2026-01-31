@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState, useEffect, useRef } from 'react';
-import { m, useScroll, useMotionValueEvent } from 'framer-motion';
+import { m, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
@@ -46,6 +46,11 @@ export default function Header() {
     }
   }, [isHeaderVisible, isMobileMenuOpen]);
 
+  // Close mobile menu when navigating to a new page
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   const navLinks: NavLink[] = useMemo(() => [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
@@ -70,6 +75,13 @@ export default function Header() {
       label: 'Sectors',
       children: [
         { href: '/sectors/hub', label: 'All Sectors' },
+        { href: '/sectors/education', label: 'Education' },
+        { href: '/sectors/healthcare', label: 'Healthcare' },
+        { href: '/sectors/government', label: 'Government' },
+        { href: '/sectors/commercial', label: 'Commercial' },
+        { href: '/sectors/retail', label: 'Retail' },
+        { href: '/sectors/industrial', label: 'Industrial' },
+        { href: '/sectors/high-security', label: 'High Security' },
       ],
     },
     {
@@ -77,6 +89,13 @@ export default function Header() {
       label: 'Roles',
       children: [
         { href: '/roles/hub', label: 'All Roles' },
+        { href: '/roles/ceo', label: 'CEO' },
+        { href: '/roles/cfo', label: 'CFO' },
+        { href: '/roles/coo', label: 'COO' },
+        { href: '/roles/esg-lead', label: 'ESG Lead' },
+        { href: '/roles/facilities', label: 'Facilities Manager' },
+        { href: '/roles/fire-safety-lead', label: 'Fire Safety Lead' },
+        { href: '/roles/security-head', label: 'Security Head' },
       ],
     },
     {
@@ -125,8 +144,8 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Desktop Navigation - Visible on large screens and up */}
-          <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6 flex-1 justify-end min-w-0">
+          {/* Desktop Navigation - Visible on xl screens and up (1280px) to prevent overlap with logo */}
+          <nav className="hidden xl:flex items-center gap-3 2xl:gap-5 flex-1 justify-end min-w-0">
             {navLinks.map((link) => (
               <NavLinkItem key={link.href} link={link} isMobile={false} />
             ))}
@@ -134,13 +153,13 @@ export default function Header() {
             {/* Book a Demo Button */}
             <Link
               href="/contact"
-              className="px-4 xl:px-6 2xl:px-8 py-2 xl:py-2.5 rounded-sm font-bold text-[10px] xl:text-xs 2xl:text-sm uppercase tracking-wider bg-white text-black hover:bg-unifi-blue hover:text-white transition-all duration-300 whitespace-nowrap flex-shrink-0 ml-2"
+              className="px-4 2xl:px-6 py-2 rounded-sm font-bold text-[10px] 2xl:text-xs uppercase tracking-wider bg-white text-black hover:bg-unifi-blue hover:text-white transition-all duration-300 whitespace-nowrap flex-shrink-0 ml-2"
             >
               Book a Demo
             </Link>
           </nav>
 
-          {/* Mobile Menu Button - Visible on screens smaller than lg */}
+          {/* Hamburger Menu Button - Visible on screens smaller than xl (1280px) */}
           <button 
             type="button"
             onClick={(e) => {
@@ -148,7 +167,7 @@ export default function Header() {
               e.stopPropagation();
               setIsMobileMenuOpen(!isMobileMenuOpen);
             }}
-            className="lg:hidden p-2 text-white hover:bg-white/10 rounded transition-colors z-10 relative"
+            className="xl:hidden p-2 text-white hover:bg-white/10 rounded transition-colors z-10 relative flex-shrink-0"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -161,9 +180,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown - Outside container for full width, visible on screens smaller than lg when open */}
+      {/* Mobile Menu - Visible on screens smaller than xl when hamburger is open */}
       {isMobileMenuOpen && (
-        <div className={`lg:hidden border-t w-full shadow-lg transition-all duration-500 ${
+        <div className={`xl:hidden border-t w-full shadow-lg transition-all duration-500 ${
           isBlackHeader 
             ? 'bg-black border-white/20' 
             : 'bg-white/10 backdrop-blur-md border-white/10'
@@ -171,7 +190,7 @@ export default function Header() {
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
             <nav className="flex flex-col py-4">
               {navLinks.map((link) => (
-                <NavLinkItem key={`mobile-${link.href}`} link={link} isMobile={true} />
+                <NavLinkItem key={`mobile-${link.href}`} link={link} isMobile={true} onNavigate={() => setIsMobileMenuOpen(false)} />
               ))}
               <Link
                 href="/contact"
@@ -188,7 +207,7 @@ export default function Header() {
   );
 }
 
-function NavLinkItem({ link, isMobile }: { link: NavLink; isMobile?: boolean }) {
+function NavLinkItem({ link, isMobile, onNavigate }: { link: NavLink; isMobile?: boolean; onNavigate?: () => void }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -228,12 +247,22 @@ function NavLinkItem({ link, isMobile }: { link: NavLink; isMobile?: boolean }) 
     }
   };
 
+  const handleDesktopClick = (e: React.MouseEvent) => {
+    if (!isMobile && hasChildren) {
+      e.preventDefault();
+      setIsDropdownOpen((prev) => !prev);
+    }
+  };
+
   if (isMobile) {
     return (
       <div className="w-full">
         <Link
           href={link.href}
-          onClick={handleMobileClick}
+          onClick={(e) => {
+            handleMobileClick(e);
+            if (!hasChildren) onNavigate?.();
+          }}
           className="block w-full py-3 px-4 text-base font-bold uppercase tracking-wider rounded transition-all duration-200 cursor-pointer text-white hover:bg-white/20 active:bg-white/30"
         >
           {link.label}
@@ -244,6 +273,7 @@ function NavLinkItem({ link, isMobile }: { link: NavLink; isMobile?: boolean }) 
               <Link
                 key={childLink.href}
                 href={childLink.href}
+                onClick={() => onNavigate?.()}
                 className="block w-full py-2 px-4 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-colors"
               >
                 {childLink.label}
@@ -257,49 +287,54 @@ function NavLinkItem({ link, isMobile }: { link: NavLink; isMobile?: boolean }) 
 
   return (
     <div
-      className="relative"
+      className="relative group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       ref={dropdownRef}
     >
       <Link
         href={link.href}
-        className="relative py-2 text-[10px] xl:text-[11px] font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:text-white/80 whitespace-nowrap flex-shrink-0"
+        onClick={handleDesktopClick}
+        className="relative py-2 text-[10px] xl:text-[11px] font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:text-white whitespace-nowrap flex-shrink-0 cursor-pointer"
       >
         {link.label}
         {hasChildren && (
-          <span className="ml-1 text-white/50">&#9660;</span> // Dropdown arrow
+          <span className="ml-1 inline-block transition-transform duration-200" style={{ transform: isDropdownOpen ? 'rotate(180deg)' : 'none' }}>&#9660;</span>
         )}
         {/* Unifi.id Style Hover Line Animation */}
         <m.div
           initial={false}
           animate={{
-            width: isHovered ? '100%' : '0%',
+            width: isHovered || isDropdownOpen ? '100%' : '0%',
           }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-0 left-0 h-[2px] bg-white"
         />
       </Link>
-      {hasChildren && isDropdownOpen && (
-        <m.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="absolute top-full left-0 mt-2 w-48 bg-black border border-white/10 rounded-md shadow-lg overflow-hidden"
-        >
-          {link.children?.map((childLink) => (
-            <Link
-              key={childLink.href}
-              href={childLink.href}
-              className="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-              onClick={() => setIsDropdownOpen(false)}
-            >
-              {childLink.label}
-            </Link>
-          ))}
-        </m.div>
-      )}
+      <AnimatePresence>
+        {hasChildren && isDropdownOpen && (
+          <m.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-0 pt-1 z-[60]"
+          >
+            <div className="mt-1 w-56 bg-black border border-white/10 rounded-md shadow-xl overflow-hidden">
+              {link.children?.map((childLink) => (
+                <Link
+                  key={childLink.href}
+                  href={childLink.href}
+                  className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                  onClick={() => setIsDropdownOpen(false)}
+                >
+                  {childLink.label}
+                </Link>
+              ))}
+            </div>
+          </m.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

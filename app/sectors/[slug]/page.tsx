@@ -1,4 +1,3 @@
-'use client';
 import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
 import { notFound } from 'next/navigation';
 
@@ -7,10 +6,27 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { getSectorBySlug, sectors } from '@/src/content/sectors';
+import type { Metadata } from 'next';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const sector = getSectorBySlug(slug);
+  if (!sector || sector.comingSoon) return {};
+  const title = `${sector.title} Sector | Unifi.id`;
+  return {
+    title,
+    description: sector.description,
+    openGraph: {
+      title,
+      description: sector.description,
+      type: 'website',
+    },
+  };
+}
 
 export function generateStaticParams() {
   return sectors.filter((s) => !s.comingSoon).map((s) => ({ slug: s.slug }));

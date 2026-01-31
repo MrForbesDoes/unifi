@@ -4,6 +4,7 @@ import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import { Section } from '@/src/components/Section';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
+import { SEO } from '@/src/components/SEO';
 
 const tech = [
   {
@@ -26,6 +27,10 @@ const tech = [
 export default function EnergyTechnology() {
   return (
     <>
+      <SEO
+        title="Energy Technology | LED, Heating, Solar"
+        description="Explore technology pathways for funded energy upgrades. LED lighting, heating & HVAC, and solar & renewables with zero capital outlay."
+      />
       <Section className="min-h-[55vh] flex items-center">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <H1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">

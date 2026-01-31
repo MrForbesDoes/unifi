@@ -6,6 +6,7 @@ import Text from '@/src/components/Text';
 import { ButtonLink } from '@/src/components/ButtonLink';
 import Card from '@/src/components/Card';
 import { SEO } from '@/src/components/SEO';
+import { Cloud, Cpu, Lock, Database, GitBranch, Zap, Building2, Network, Target } from 'lucide-react';
 
 export default function PlatformOverviewPage() {
   const [activeTab, setActiveTab] = useState('modular');
@@ -230,13 +231,226 @@ export default function PlatformOverviewPage() {
                   ))}
                 </div>
               </div>
+
+              {/* Specialized Platforms */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <span className="text-orange-600 text-xl">🛡️</span>
+                  </div>
+                  <Text as="h3" variant="h3">Complete Specialised Platforms</Text>
+                </div>
+                <Text variant="body" className="mb-6 text-gray-600">
+                  Pre-integrated solutions combining multiple modules for specific industry needs
+                </Text>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <Card className="border-t-4 border-red-500">
+                    <Text as="h3" variant="h3" className="mb-2">FireGuard</Text>
+                    <Text variant="body" className="mb-4">Complete fire safety ecosystem combining detection, prevention, and emergency response capabilities</Text>
+                    <ButtonLink href="/solutions/fireguard" variant="outline">Learn More</ButtonLink>
+                  </Card>
+                  <Card className="border-t-4 border-blue-500">
+                    <Text as="h3" variant="h3" className="mb-2">InsureLink</Text>
+                    <Text variant="body" className="mb-4">Insurance-integrated platform that reduces premiums through demonstrated risk management</Text>
+                    <ButtonLink href="/solutions/insurelink" variant="outline">Learn More</ButtonLink>
+                  </Card>
+                </div>
+              </div>
+
+              <div className="bg-slate-50 rounded-lg p-8">
+                <Text as="h3" variant="h3" className="mb-4">Ready to Build Your Solution?</Text>
+                <Text variant="body" className="mb-6">Explore our complete portfolio of solutions and discover how to create the perfect intelligent building ecosystem for your needs.</Text>
+                <ButtonLink href="/solutions/hub">View Solutions Hub</ButtonLink>
+              </div>
             </div>
           )}
 
-          {/* Other tabs would go here with similar structure */}
-          {activeTab !== 'modular' && (
-            <div className="py-20 text-center text-gray-500">
-              Content for {activeTab} is being updated with the latest audit data.
+          {/* Tab Content - Platform Architecture */}
+          {activeTab === 'architecture' && (
+            <div className="space-y-12">
+              <div>
+                <Text as="h2" variant="h2" className="mb-4">Enterprise-Grade Technical Foundation</Text>
+                <Text variant="body" className="text-lg">
+                  Built on a cloud-native, AI-powered architecture that delivers enterprise-grade performance, security, and scalability for any building portfolio.
+                </Text>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border-l-4 border-blue-500">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Cloud className="h-8 w-8 text-blue-600" />
+                    <Text as="h3" variant="h3">Cloud-Native Infrastructure</Text>
+                  </div>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Auto-scaling microservices architecture</li>
+                    <li>• 99.9% uptime with global redundancy</li>
+                    <li>• Edge computing for real-time processing</li>
+                    <li>• Unlimited scalability for any portfolio size</li>
+                  </ul>
+                </Card>
+                <Card className="border-l-4 border-green-500">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Cpu className="h-8 w-8 text-green-600" />
+                    <Text as="h3" variant="h3">AI & Data Processing</Text>
+                  </div>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Real-time machine learning inference</li>
+                    <li>• Stream processing for millions of events/second</li>
+                    <li>• Advanced analytics and predictive modelling</li>
+                    <li>• Continuous learning and model optimisation</li>
+                  </ul>
+                </Card>
+                <Card className="border-l-4 border-purple-500">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Lock className="h-8 w-8 text-purple-600" />
+                    <Text as="h3" variant="h3">Security & Compliance</Text>
+                  </div>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Zero-trust architecture with end-to-end encryption</li>
+                    <li>• SOC 2 Type II and ISO 27001 certified</li>
+                    <li>• GDPR compliant with data residency options</li>
+                    <li>• Advanced threat detection and monitoring</li>
+                  </ul>
+                </Card>
+              </div>
+
+              <Card className="bg-slate-50">
+                <Text as="h3" variant="h3" className="mb-6 text-center">Platform Architecture Overview</Text>
+                <div className="grid md:grid-cols-4 gap-6">
+                  <div className="text-center">
+                    <Database className="h-10 w-10 text-blue-600 mx-auto mb-3" />
+                    <Text as="h4" variant="h3" className="mb-2">Data Layer</Text>
+                    <Text variant="body" className="text-sm">Real-time data ingestion and processing</Text>
+                  </div>
+                  <div className="text-center">
+                    <Cpu className="h-10 w-10 text-green-600 mx-auto mb-3" />
+                    <Text as="h4" variant="h3" className="mb-2">AI Engine</Text>
+                    <Text variant="body" className="text-sm">Machine learning and analytics</Text>
+                  </div>
+                  <div className="text-center">
+                    <GitBranch className="h-10 w-10 text-purple-600 mx-auto mb-3" />
+                    <Text as="h4" variant="h3" className="mb-2">API Gateway</Text>
+                    <Text variant="body" className="text-sm">Integration and orchestration</Text>
+                  </div>
+                  <div className="text-center">
+                    <Zap className="h-10 w-10 text-orange-600 mx-auto mb-3" />
+                    <Text as="h4" variant="h3" className="mb-2">Application Layer</Text>
+                    <Text variant="body" className="text-sm">User interfaces and experiences</Text>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          )}
+
+          {/* Tab Content - Licensing */}
+          {activeTab === 'licensing' && (
+            <div className="space-y-12">
+              <div>
+                <Text as="h2" variant="h2" className="mb-4">Flexible Licensing for Every Need</Text>
+                <Text variant="body" className="text-lg">
+                  Choose the licensing model that best fits your organisation, from single buildings to enterprise-wide deployments.
+                </Text>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card>
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <Building2 className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <Text as="h3" variant="h3" className="mb-2">Per-Building</Text>
+                  <Text variant="body" className="mb-6">Perfect for single sites or gradual rollouts</Text>
+                  <ul className="space-y-2 text-gray-700 mb-6">
+                    <li>• Monthly or annual per-building pricing</li>
+                    <li>• No minimum commitment required</li>
+                    <li>• Scale up or down as needed</li>
+                    <li>• Full feature access included</li>
+                  </ul>
+                  <div className="text-blue-600 font-semibold mb-6">Starting from £500/month</div>
+                  <ButtonLink href="/contact" variant="outline" className="w-full">Discuss Options</ButtonLink>
+                </Card>
+                <Card className="border-2 border-primary relative">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full">Most Popular</span>
+                  <div className="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6 mt-2">
+                    <Network className="h-8 w-8 text-green-600" />
+                  </div>
+                  <Text as="h3" variant="h3" className="mb-2">Enterprise</Text>
+                  <Text variant="body" className="mb-6">Comprehensive agreements for large portfolios</Text>
+                  <ul className="space-y-2 text-gray-700 mb-6">
+                    <li>• Volume discounts for multiple buildings</li>
+                    <li>• Dedicated account management</li>
+                    <li>• Priority support and SLA guarantees</li>
+                    <li>• Custom integrations included</li>
+                  </ul>
+                  <div className="text-green-600 font-semibold mb-6">Contact for pricing</div>
+                  <ButtonLink href="/contact" variant="primary" className="w-full">Discuss Licensing</ButtonLink>
+                </Card>
+                <Card>
+                  <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                    <Target className="h-8 w-8 text-purple-600" />
+                  </div>
+                  <Text as="h3" variant="h3" className="mb-2">Outcome-Based</Text>
+                  <Text variant="body" className="mb-6">Pay based on achieved savings and benefits</Text>
+                  <ul className="space-y-2 text-gray-700 mb-6">
+                    <li>• Share of energy savings achieved</li>
+                    <li>• Performance guarantees included</li>
+                    <li>• Aligned incentives for optimisation</li>
+                    <li>• Risk mitigation for customers</li>
+                  </ul>
+                  <div className="text-purple-600 font-semibold mb-6">15–25% of savings</div>
+                  <ButtonLink href="/contact" variant="outline" className="w-full">Discuss Options</ButtonLink>
+                </Card>
+              </div>
+
+              <div className="text-center">
+                <ButtonLink href="/contact">Discuss Licensing Options</ButtonLink>
+              </div>
+            </div>
+          )}
+
+          {/* Tab Content - Integration */}
+          {activeTab === 'integration' && (
+            <div className="space-y-12">
+              <div>
+                <Text as="h2" variant="h2" className="mb-4">Universal Integration Capabilities</Text>
+                <Text variant="body" className="text-lg">
+                  Connect with any building system, sensor, or software through our comprehensive integration framework.
+                </Text>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <Text as="h3" variant="h3" className="mb-6">Integration Benefits</Text>
+                  <div className="space-y-4">
+                    <Card className="border-l-4 border-blue-500">
+                      <Text as="h4" variant="h3" className="mb-2">Modular Deployment</Text>
+                      <Text variant="body">Deploy individual modules without affecting existing systems. Each module integrates independently.</Text>
+                    </Card>
+                    <Card className="border-l-4 border-green-500">
+                      <Text as="h4" variant="h3" className="mb-2">Unified Platform</Text>
+                      <Text variant="body">Single dashboard for all building systems. No more switching between multiple interfaces.</Text>
+                    </Card>
+                    <Card className="border-l-4 border-purple-500">
+                      <Text as="h4" variant="h3" className="mb-2">Future-Ready</Text>
+                      <Text variant="body">Add new modules and capabilities as they become available without system overhauls.</Text>
+                    </Card>
+                  </div>
+                </div>
+                <div>
+                  <Text as="h3" variant="h3" className="mb-6">Supported Systems</Text>
+                  <div className="flex flex-wrap gap-3">
+                    {['BACnet', 'Modbus', 'MQTT', 'REST APIs', 'OPC-UA', 'SNMP', 'Wi-Fi', 'Ethernet', 'Cellular', 'Fire Systems', 'HVAC', 'Lighting', 'Access Control'].map((sys) => (
+                      <span key={sys} className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700">
+                        {sys}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4 justify-center">
+                <ButtonLink href="/contact">View Integration Guide</ButtonLink>
+                <ButtonLink href="/contact" variant="outline">Schedule Technical Demo</ButtonLink>
+              </div>
             </div>
           )}
         </div>

@@ -1,7 +1,6 @@
 'use client';
 import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
-
-
+import { SEO } from '@/src/components/SEO';
 import { useState } from "react";
 import { Section } from "@/src/components/Section";
 import { ButtonLink } from "@/src/components/ButtonLink";
@@ -10,28 +9,30 @@ import { FileText, Shield, HelpCircle, Mail } from "lucide-react";
 const legalSections = [
   {
     id: "privacy",
-    title: "Privacy Policy",
+    title: "Privacy Policy (GDPR-Compliant)",
     icon: Shield,
     content: `Unifi.id is committed to protecting your privacy and handling your data with transparency and care.
 
 **Data Collection:**
-We collect only the data necessary to deliver our services, including building occupancy data, system integration data, and user account information.
+We collect name, job title, company, email, phone, usage data, form submissions, technical data via cookies, and for clients: RFID tag data and occupancy system metadata.
 
-**Data Usage:**
-Your data is used exclusively to provide intelligent building management services, generate analytics, and improve our platform.
-
-**Data Security:**
-We employ industry-standard encryption, secure data centers, and regular security audits to protect your information.
+**How We Use Your Data:**
+To respond to enquiries, provide services, personalise content, deliver platform insights, and for legal and compliance purposes. We never sell your data to third parties.
 
 **Your Rights:**
-You have the right to access, modify, or delete your data at any time. Contact our support team for assistance.
-
-**Compliance:**
-We comply with GDPR, CCPA, and other relevant data protection regulations.`,
+Under GDPR you have the right to access, correct, delete, restrict processing, object, and lodge a complaint with the ICO. Contact privacy@unifi.id.`,
+    href: "/privacy",
+  },
+  {
+    id: "modern-slavery",
+    title: "Modern Slavery Statement",
+    icon: FileText,
+    content: `Unifi.id has a zero-tolerance approach to modern slavery and human trafficking. We limit our geographical scope, maintain long-standing partner relationships, and have whistle-blower protection systems. Our effectiveness is measured through supplier assessments, labour monitoring, and ongoing supplier dialogue.`,
+    href: "/modern-slavery",
   },
   {
     id: "terms",
-    title: "Terms of Service",
+    title: "Terms of Use",
     icon: FileText,
     content: `These Terms of Service govern your use of the Cortex™ platform and related services provided by Unifi.id.
 
@@ -107,6 +108,10 @@ export default function LegalSupportPage() {
 
   return (
     <>
+      <SEO
+        title="Legal & Support"
+        description="Privacy policy, terms of service, cookie policy, and support. Transparency, compliance, and support you can rely on."
+      />
       {/* Hero Section */}
       <Section className="bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -155,6 +160,13 @@ export default function LegalSupportPage() {
                             </p>
                           );
                         })}
+                        {'href' in section && section.href && (
+                          <div className="mt-6">
+                            <ButtonLink href={section.href} variant="secondary">
+                              Read full {section.title} →
+                            </ButtonLink>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

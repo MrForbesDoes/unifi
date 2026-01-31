@@ -7,7 +7,7 @@ import type { ReactNode } from 'react';
  * CoolPlanet-inspired Easing & Timing
  * Heavy start, very smooth finish.
  */
-export const COOL_EASE = [0.16, 1, 0.3, 1];
+export const COOL_EASE = [0.16, 1, 0.3, 1] as const;
 export const DURATION_STANDARD = 0.8;
 export const DURATION_HERO = 1.2;
 

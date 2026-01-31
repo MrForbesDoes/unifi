@@ -1,5 +1,6 @@
 'use client';
 import { ButtonLink } from '@/src/components/ButtonLink';
+import { SEO } from '@/src/components/SEO';
 import Card from '@/src/components/Card';
 import Hero from '@/src/components/Hero';
 import ImagePlaceholder from '@/src/components/ImagePlaceholder';
@@ -38,6 +39,10 @@ const roles = [
 export default function Roles() {
   return (
     <>
+      <SEO
+        title="Roles | Tailored Intelligence for Decision Makers"
+        description="Unifi.id is built for decision makers and delivery teams responsible for safety, cost, and carbon. Explore role-specific pathways."
+      />
       <Hero
         title={
           <Text as="h1" variant="h1" className="mb-6">

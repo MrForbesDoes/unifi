@@ -1,48 +1,138 @@
 'use client';
-import { H1, H2, H3, Body, Lead } from "@/src/components/Typography";
+import { H1, H2, H3, Body } from "@/src/components/Typography";
 import { ButtonLink } from '@/src/components/ButtonLink';
 import { Section } from '@/src/components/Section';
-import PlaceholderImage from '@/src/components/PlaceholderImage';
+import { SEO } from '@/src/components/SEO';
+import { CheckCircle, PoundSterling, CreditCard, TrendingUp, FileText } from 'lucide-react';
 
 export default function FundingOptions() {
   return (
     <>
-      <Section className="min-h-[55vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
+      <SEO
+        title="Funding Options | Energy Upgrades Without Upfront Capital"
+        description="Multiple funding routes available to support your building upgrade programme with zero upfront capital required."
+      />
+      <Section className="min-h-[40vh] flex items-center">
+        <div className="max-w-7xl mx-auto px-6 w-full text-center">
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 rounded-xl bg-unifi-green/10 flex items-center justify-center">
+              <PoundSterling className="w-8 h-8 text-unifi-green" />
+            </div>
+          </div>
           <H1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
             Funding Options
           </H1>
-          <div className="space-y-4 mb-10 max-w-3xl">
-            <p className="text-lg md:text-xl text-gray-600">
-              Funding routes are designed to avoid unnecessary upfront capital where applicable.
-            </p>
-            <p className="text-lg md:text-xl text-gray-600">
-              Modelling remains conservative and evidence-led.
-            </p>
+          <Body className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Multiple funding routes available to support your building upgrade programme with zero upfront capital required.
+          </Body>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="bg-white p-6 rounded-xl border border-gray-200 flex items-start gap-4">
+              <CreditCard className="w-12 h-12 text-unifi-blue flex-shrink-0" />
+              <div>
+                <H3 className="text-lg font-bold text-gray-900 mb-1">Zero Upfront Costs</H3>
+                <Body>Preserve capital for core business operations</Body>
+              </div>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 flex items-start gap-4">
+              <TrendingUp className="w-12 h-12 text-unifi-green flex-shrink-0" />
+              <div>
+                <H3 className="text-lg font-bold text-gray-900 mb-1">Flexible Terms</H3>
+                <Body>Repayment schedules aligned with energy savings</Body>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <ButtonLink href="/energy/hub">Back to hub</ButtonLink>
-            <ButtonLink href="/energy/contact" variant="secondary">
-              Energy contact
-            </ButtonLink>
-          </div>
-        
+        </div>
+      </Section>
 
-          <div className="mt-10">
-            <PlaceholderImage className="aspect-[4/3] lg:aspect-[3/2] shadow-sm" />
+      <Section backgroundColor="gray">
+        <div className="max-w-7xl mx-auto px-6">
+          <H2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Available Funding Models</H2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-lg bg-unifi-green/10 flex items-center justify-center">
+                  <PoundSterling className="w-6 h-6 text-unifi-green" />
+                </div>
+                <H3 className="text-xl font-bold text-gray-900">Grant & Subsidy Support</H3>
+              </div>
+              <Body className="mb-6 text-gray-600">
+                Access to various government and local authority grants and incentives to reduce overall project costs.
+              </Body>
+              <ul className="space-y-3">
+                {[
+                  "Salix Finance for public sector",
+                  "Local Authority Energy Efficiency schemes",
+                  "Clean Growth Fund opportunities",
+                  "We handle all applications and administration"
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-3 items-start">
+                    <CheckCircle className="w-5 h-5 text-unifi-green flex-shrink-0 mt-0.5" />
+                    <Body>{item}</Body>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <H3 className="text-xl font-bold text-gray-900 mb-6">Sector-Specific Funding</H3>
+              <div className="grid gap-4">
+                {[
+                  { icon: FileText, title: "Education", desc: "CIF funding, Salix grants, and education-specific programmes" },
+                  { icon: CheckCircle, title: "Public Sector", desc: "PSDS, Local Authority schemes, and government initiatives" },
+                  { icon: TrendingUp, title: "Commercial", desc: "Enhanced Capital Allowances and business financing options" },
+                  { icon: FileText, title: "Industrial", desc: "Industrial Energy Transformation Fund and sector-specific support" }
+                ].map((item, i) => {
+                  const Icon = item.icon;
+                  const iconColors = ["bg-unifi-blue/10 text-unifi-blue", "bg-unifi-green/10 text-unifi-green", "bg-purple-100 text-purple-600", "bg-orange-100 text-orange-600"];
+                  return (
+                    <div key={i} className="bg-white p-4 rounded-xl border border-gray-100 flex items-start gap-4">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${iconColors[i]}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <H3 className="font-bold text-gray-900 mb-1">{item.title}</H3>
+                        <Body className="text-sm text-gray-600">{item.desc}</Body>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-</div>
+        </div>
       </Section>
 
       <Section>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <H2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
-              Principles
-            </H2>
-            <p className="text-base md:text-lg text-gray-700">
-              No upfront capital where applicable. Cashflow positive where applicable. Conservative modelling only.
-            </p>
+          <H2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Typical Project Economics</H2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-unifi-blue/5 p-8 rounded-2xl text-center border border-unifi-blue/10">
+              <div className="text-4xl font-bold text-unifi-blue mb-2">20-40%</div>
+              <H3 className="text-lg font-bold text-gray-900 mb-1">Energy Savings</H3>
+              <Body className="text-gray-600 text-sm">Typical reduction in energy costs</Body>
+            </div>
+            <div className="bg-unifi-blue/5 p-8 rounded-2xl text-center border border-unifi-blue/10">
+              <div className="text-4xl font-bold text-unifi-blue mb-2">3-7 Years</div>
+              <H3 className="text-lg font-bold text-gray-900 mb-1">Payback Period</H3>
+              <Body className="text-gray-600 text-sm">Including financing and grants</Body>
+            </div>
+            <div className="bg-unifi-blue/5 p-8 rounded-2xl text-center border border-unifi-blue/10">
+              <div className="text-4xl font-bold text-unifi-blue mb-2">15-20 Years</div>
+              <H3 className="text-lg font-bold text-gray-900 mb-1">Asset Life</H3>
+              <Body className="text-gray-600 text-sm">Continued savings after payback</Body>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section backgroundColor="gray">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <H2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Explore Your Funding Options?</H2>
+          <Body className="mb-8 text-gray-600">
+            Let our financing specialists identify the best funding route for your specific requirements.
+          </Body>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ButtonLink href="/energy/contact">Book Free Survey</ButtonLink>
+            <ButtonLink href="/energy/hub" variant="secondary">Back to Energy Hub</ButtonLink>
           </div>
         </div>
       </Section>

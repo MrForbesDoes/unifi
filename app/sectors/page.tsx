@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { Section } from '@/src/components/Section';
 import { ButtonLink } from '@/src/components/ButtonLink';
+import { SEO } from '@/src/components/SEO';
 import Card from '@/src/components/Card';
 import PlaceholderImage from '@/src/components/PlaceholderImage';
 import { sectors } from '@/src/content/sectors';
@@ -11,6 +12,10 @@ import { sectors } from '@/src/content/sectors';
 export default function Sectors() {
   return (
     <>
+      <SEO
+        title="Sectors | Building Intelligence by Industry"
+        description="Start with your sector, then follow the pathways across platform (Cortex), fire safety (FireGuard), and energy."
+      />
       {/* Hero */}
       <Section className="min-h-[70vh] flex items-center">
         <div className="max-w-7xl mx-auto px-6 w-full">
